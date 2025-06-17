@@ -80,8 +80,8 @@ const HeroSection: React.FC = () => {
                                 boxShadow: '0 8px 32px rgba(63, 81, 181, 0.3)',
                                 mx: 'auto',
                             }}
-                            src="/profile-placeholder.jpg" // You'll replace this with your actual photo
-                            alt="Your Name"
+                            src="/profile_photo.jpeg"
+                            alt="Bernardo Moschen"
                         >
                             YN
                         </Avatar>
@@ -101,7 +101,7 @@ const HeroSection: React.FC = () => {
                                 WebkitTextFillColor: 'transparent',
                             }}
                         >
-                            Hi, I'm Your Name
+                            Hi, I'm Bernardo Moschen
                         </Typography>
 
                         <Typography
@@ -180,7 +180,7 @@ const HeroSection: React.FC = () => {
                                 variant="outlined"
                                 size="large"
                                 startIcon={<Download />}
-                                href="/resume.pdf" // You'll add your resume file
+                                href="/resume.pdf"
                                 target="_blank"
                                 sx={{
                                     borderColor: 'primary.main',
@@ -200,8 +200,7 @@ const HeroSection: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<GitHub />}
-                                href="https://github.com/yourusername" // Replace with your GitHub
-                                target="_blank"
+                                href="https://github.com/bernardoMoschen"
                                 sx={{ color: 'text.secondary' }}
                             >
                                 GitHub
@@ -209,7 +208,7 @@ const HeroSection: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<LinkedIn />}
-                                href="https://linkedin.com/in/yourusername" // Replace with your LinkedIn
+                                href="https://linkedin.com/in/bernardomoschen"
                                 target="_blank"
                                 sx={{ color: 'text.secondary' }}
                             >

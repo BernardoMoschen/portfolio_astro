@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-// Create a custom Material UI theme
 export const theme = createTheme({
   palette: {
     mode: 'dark',

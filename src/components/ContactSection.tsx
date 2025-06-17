@@ -105,22 +105,22 @@ const ContactSection: React.FC = () => {
         {
             icon: <GitHub />,
             label: 'GitHub',
-            url: 'https://github.com/yourusername',
+            url: 'https://github.com/bernardoMoschen',
         },
         {
             icon: <LinkedIn />,
             label: 'LinkedIn',
-            url: 'https://linkedin.com/in/yourusername',
+            url: 'https://linkedin.com/in/bernardomoschen',
         },
-        {
-            icon: <Twitter />,
-            label: 'Twitter',
-            url: 'https://twitter.com/yourusername',
-        },
+        // {
+        //     icon: <Twitter />,
+        //     label: 'Twitter',
+        //     url: 'https://twitter.com/yourusername',
+        // },
         {
             icon: <Email />,
             label: 'Email',
-            url: 'mailto:your.email@example.com',
+            url: 'mailto:bernardomoschen.dev@gmail.com',
         },
     ];
 

@@ -100,7 +100,7 @@ Update the following files with your personal information:
 
 Add your files to the `public/` directory:
 
-- Profile photo: `public/profile-photo.jpg`
+- Profile photo: `public/profile-photo`
 - Resume: `public/resume.pdf`
 - Project images: `public/project-*.jpg`
 
