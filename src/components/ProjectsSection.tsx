@@ -20,7 +20,40 @@ import {
     Launch,
     Code,
     Star,
+    CheckCircle,
+    Build,
+    Schedule,
 } from '@mui/icons-material';
+
+// Helper function to get status information
+const getStatusInfo = (status: string) => {
+    switch (status) {
+        case 'completed':
+            return {
+                label: 'Completed',
+                color: 'success' as const,
+                icon: <CheckCircle />,
+            };
+        case 'wip':
+            return {
+                label: 'In Progress',
+                color: 'warning' as const,
+                icon: <Build />,
+            };
+        case 'planning':
+            return {
+                label: 'Coming Soon',
+                color: 'info' as const,
+                icon: <Schedule />,
+            };
+        default:
+            return {
+                label: 'Completed',
+                color: 'success' as const,
+                icon: <CheckCircle />,
+            };
+    }
+};
 
 const ProjectsSection: React.FC = () => {
     const theme = useTheme();
@@ -28,58 +61,64 @@ const ProjectsSection: React.FC = () => {
 
     const projects = [
         {
-            title: 'E-Commerce Platform',
-            description: 'A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, inventory management, and admin dashboard.',
-            image: '/project1-placeholder.jpg',
-            technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Material UI'],
-            githubUrl: 'https://github.com/yourusername/ecommerce-platform',
-            liveUrl: 'https://your-ecommerce-demo.com',
+            title: 'Portfolio Website',
+            description: 'A modern, responsive portfolio website built with Astro, React, and Material UI. Features dark theme, smooth animations, responsive design, and optimized performance.',
+            image: '/project-portfolio.jpg',
+            technologies: ['Astro', 'React', 'Material UI', 'TypeScript'],
+            githubUrl: 'https://github.com/BernardoMoschen/portfolio_astro',
+            liveUrl: 'https://bernardomoschen.dev', // Update with your actual domain
             featured: true,
+            status: 'completed'
+        },
+        {
+            title: 'E-Commerce Platform',
+            description: 'Full-stack e-commerce solution with user authentication, payment processing, inventory management, and admin dashboard. Currently in development.',
+            image: '/project-placeholder.jpg',
+            technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Material UI'],
+            githubUrl: '',
+            liveUrl: '',
+            featured: true,
+            status: 'wip'
         },
         {
             title: 'Task Management App',
-            description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-            image: '/project2-placeholder.jpg',
-            technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
-            githubUrl: 'https://github.com/yourusername/task-manager',
-            liveUrl: 'https://your-task-manager.com',
-            featured: true,
+            description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
+            image: '/project-placeholder.jpg',
+            technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Socket.io'],
+            githubUrl: '',
+            liveUrl: '',
+            featured: false,
+            status: 'planning'
         },
         {
             title: 'Weather Dashboard',
-            description: 'A responsive weather application that provides detailed weather information, forecasts, and interactive maps using OpenWeatherMap API.',
-            image: '/project3-placeholder.jpg',
+            description: 'Responsive weather application with detailed forecasts, interactive maps, and data visualization using modern APIs.',
+            image: '/project-placeholder.jpg',
             technologies: ['React', 'TypeScript', 'Chart.js', 'OpenWeatherMap API'],
-            githubUrl: 'https://github.com/yourusername/weather-dashboard',
-            liveUrl: 'https://your-weather-app.com',
+            githubUrl: '',
+            liveUrl: '',
             featured: false,
+            status: 'planning'
         },
         {
             title: 'Social Media API',
-            description: 'RESTful API for a social media platform with user authentication, post management, real-time notifications, and comprehensive testing.',
-            image: '/project4-placeholder.jpg',
+            description: 'RESTful API for social media platform with authentication, real-time notifications, and comprehensive testing suite.',
+            image: '/project-placeholder.jpg',
             technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Jest'],
-            githubUrl: 'https://github.com/yourusername/social-api',
+            githubUrl: '',
             liveUrl: '',
             featured: false,
-        },
-        {
-            title: 'Portfolio Website',
-            description: 'A modern, responsive portfolio website built with Astro and Material UI, featuring smooth animations and optimized performance.',
-            image: '/project5-placeholder.jpg',
-            technologies: ['Astro', 'React', 'Material UI', 'TypeScript'],
-            githubUrl: 'https://github.com/yourusername/portfolio',
-            liveUrl: 'https://your-portfolio.com',
-            featured: false,
+            status: 'planning'
         },
         {
             title: 'Real Estate Platform',
-            description: 'A comprehensive real estate platform with property listings, virtual tours, mortgage calculator, and agent management system.',
-            image: '/project6-placeholder.jpg',
+            description: 'Comprehensive real estate platform with property listings, virtual tours, and mortgage calculator.',
+            image: '/project-placeholder.jpg',
             technologies: ['Vue.js', 'Node.js', 'MySQL', 'AWS S3', 'Mapbox'],
-            githubUrl: 'https://github.com/yourusername/real-estate',
-            liveUrl: 'https://your-real-estate.com',
+            githubUrl: '',
+            liveUrl: '',
             featured: false,
+            status: 'planning'
         },
     ];
 
@@ -158,18 +197,26 @@ const ProjectsSection: React.FC = () => {
                                     >
                                         <Code sx={{ fontSize: 60, color: 'primary.main', opacity: 0.7 }} />
                                     </CardMedia>
-                                    <Chip
-                                        icon={<Star />}
-                                        label="Featured"
-                                        size="small"
-                                        sx={{
-                                            position: 'absolute',
-                                            top: 8,
-                                            right: 8,
-                                            backgroundColor: 'secondary.main',
-                                            color: 'white',
-                                        }}
-                                    />
+                                    
+                                    {/* Status and Featured Chips */}
+                                    <Box sx={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 1, flexDirection: 'column' }}>
+                                        <Chip
+                                            icon={<Star />}
+                                            label="Featured"
+                                            size="small"
+                                            sx={{
+                                                backgroundColor: 'secondary.main',
+                                                color: 'white',
+                                            }}
+                                        />
+                                        <Chip
+                                            icon={getStatusInfo(project.status).icon}
+                                            label={getStatusInfo(project.status).label}
+                                            size="small"
+                                            color={getStatusInfo(project.status).color}
+                                            variant="filled"
+                                        />
+                                    </Box>
                                 </Box>
 
                                 <CardContent sx={{ flexGrow: 1, p: 3 }}>
@@ -214,16 +261,27 @@ const ProjectsSection: React.FC = () => {
                                 </CardContent>
 
                                 <CardActions sx={{ p: 3, pt: 0 }}>
-                                    <Button
-                                        size="small"
-                                        startIcon={<GitHub />}
-                                        href={project.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        sx={{ color: 'text.secondary' }}
-                                    >
-                                        Code
-                                    </Button>
+                                    {project.githubUrl ? (
+                                        <Button
+                                            size="small"
+                                            startIcon={<GitHub />}
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            sx={{ color: 'text.secondary' }}
+                                        >
+                                            Code
+                                        </Button>
+                                    ) : (
+                                        <Button
+                                            size="small"
+                                            startIcon={getStatusInfo(project.status).icon}
+                                            disabled
+                                            sx={{ color: 'text.disabled' }}
+                                        >
+                                            {project.status === 'wip' ? 'In Development' : 'Coming Soon'}
+                                        </Button>
+                                    )}
                                     {project.liveUrl && (
                                         <Button
                                             size="small"
@@ -275,26 +333,45 @@ const ProjectsSection: React.FC = () => {
                             >
                                 <CardContent sx={{ flexGrow: 1, p: 3 }}>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                                        <Typography
-                                            variant="h6"
-                                            component="h4"
-                                            sx={{
-                                                fontWeight: 600,
-                                                color: 'primary.main',
-                                            }}
-                                        >
-                                            {project.title}
-                                        </Typography>
-                                        <Box>
-                                            <IconButton
-                                                size="small"
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                sx={{ color: 'text.secondary' }}
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+                                            <Typography
+                                                variant="h6"
+                                                component="h4"
+                                                sx={{
+                                                    fontWeight: 600,
+                                                    color: 'primary.main',
+                                                }}
                                             >
-                                                <GitHub fontSize="small" />
-                                            </IconButton>
+                                                {project.title}
+                                            </Typography>
+                                            <Chip
+                                                icon={getStatusInfo(project.status).icon}
+                                                label={getStatusInfo(project.status).label}
+                                                size="small"
+                                                color={getStatusInfo(project.status).color}
+                                                variant="outlined"
+                                            />
+                                        </Box>
+                                        <Box>
+                                            {project.githubUrl ? (
+                                                <IconButton
+                                                    size="small"
+                                                    href={project.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    sx={{ color: 'text.secondary' }}
+                                                >
+                                                    <GitHub fontSize="small" />
+                                                </IconButton>
+                                            ) : (
+                                                <IconButton
+                                                    size="small"
+                                                    disabled
+                                                    sx={{ color: 'text.disabled' }}
+                                                >
+                                                    <GitHub fontSize="small" />
+                                                </IconButton>
+                                            )}
                                             {project.liveUrl && (
                                                 <IconButton
                                                     size="small"

@@ -36,22 +36,22 @@ const AboutSection: React.FC = () => {
 
     const experiences = [
         {
-            role: 'Senior Full Stack Developer',
-            company: 'Tech Company',
-            period: '2022 - Present',
-            description: 'Led development of scalable web applications using React, Node.js, and cloud technologies.',
-        },
-        {
             role: 'Full Stack Developer',
-            company: 'Startup Inc',
-            period: '2020 - 2022',
-            description: 'Built modern web applications and RESTful APIs. Improved application performance by 40%.',
+            company: 'Freelance Projects',
+            period: '2024 - Present',
+            description: 'Building modern web applications using React, Node.js, and TypeScript. Focus on creating responsive, user-friendly interfaces and robust backend systems.',
         },
         {
-            role: 'Frontend Developer',
-            company: 'Digital Agency',
-            period: '2019 - 2020',
-            description: 'Created responsive websites and user interfaces using React and modern CSS frameworks.',
+            role: 'Web Development Studies',
+            company: 'Self-Directed Learning',
+            period: '2023 - 2024',
+            description: 'Intensive study of full-stack development including React, Node.js, databases, and modern development practices through online courses and personal projects.',
+        },
+        {
+            role: 'Portfolio Development',
+            company: 'Personal Projects',
+            period: '2024',
+            description: 'Created this portfolio website using Astro, React, and Material UI. Focused on performance optimization, responsive design, and modern development practices.',
         },
     ];
 
@@ -103,9 +103,9 @@ const AboutSection: React.FC = () => {
                                     fontSize: '1.1rem',
                                 }}
                             >
-                                With over 4+ years of experience in full-stack development, I specialize in
-                                creating modern, scalable web applications that provide exceptional user experiences.
-                                My journey in tech has been driven by curiosity and a constant desire to learn new technologies.
+                                I'm a dedicated full-stack developer passionate about creating modern web applications 
+                                that solve real-world problems. My journey in tech began with curiosity and has evolved 
+                                into a love for building scalable, user-focused solutions using cutting-edge technologies.
                             </Typography>
 
                             <Typography
@@ -117,9 +117,9 @@ const AboutSection: React.FC = () => {
                                     fontSize: '1.1rem',
                                 }}
                             >
-                                I believe in writing clean, maintainable code and following best practices.
-                                Whether it's architecting complex backend systems or crafting intuitive user interfaces,
-                                I approach every project with attention to detail and a focus on performance.
+                                I believe in writing clean, maintainable code and following industry best practices.
+                                Whether I'm architecting backend APIs or crafting intuitive user interfaces,
+                                I approach every project with attention to detail and a focus on performance and accessibility.
                             </Typography>
 
                             <Typography
@@ -130,8 +130,9 @@ const AboutSection: React.FC = () => {
                                     fontSize: '1.1rem',
                                 }}
                             >
-                                When I'm not coding, you can find me exploring new technologies, contributing to
-                                open source projects, or sharing knowledge with the developer community.
+                                When I'm not coding, you can find me exploring new technologies, contributing to 
+                                open source projects, or learning about the latest developments in web development. 
+                                I'm always excited about collaborating on innovative projects and bringing ideas to life.
                             </Typography>
                         </Box>
                     </Grid>

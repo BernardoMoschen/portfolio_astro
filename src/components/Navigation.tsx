@@ -22,6 +22,7 @@ import {
     Close as CloseIcon,
     KeyboardArrowUp,
 } from '@mui/icons-material';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation: React.FC = () => {
     const theme = useTheme();
@@ -93,9 +94,12 @@ const Navigation: React.FC = () => {
                 <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main' }}>
                     Portfolio
                 </Typography>
-                <IconButton onClick={handleDrawerToggle} sx={{ color: 'text.primary' }}>
-                    <CloseIcon />
-                </IconButton>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <ThemeToggle size="small" />
+                    <IconButton onClick={handleDrawerToggle} sx={{ color: 'text.primary' }}>
+                        <CloseIcon />
+                    </IconButton>
+                </Box>
             </Box>
             <List>
                 {menuItems.map((item) => (
@@ -163,17 +167,20 @@ const Navigation: React.FC = () => {
                     </Typography>
 
                     {isMobile ? (
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ color: 'text.primary' }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <ThemeToggle />
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                edge="start"
+                                onClick={handleDrawerToggle}
+                                sx={{ color: 'text.primary' }}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                        </Box>
                     ) : (
-                        <Box sx={{ display: 'flex', gap: 1 }}>
+                        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                             {menuItems.map((item) => (
                                 <Button
                                     key={item.label}
@@ -204,6 +211,7 @@ const Navigation: React.FC = () => {
                                     {item.label}
                                 </Button>
                             ))}
+                            <ThemeToggle />
                         </Box>
                     )}
                 </Toolbar>

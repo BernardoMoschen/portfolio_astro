@@ -1,16 +1,15 @@
 import React from 'react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { theme } from './theme';
+import { ThemeContextProvider } from './ThemeContext';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
 import ProjectsSection from './ProjectsSection';
 import ContactSection from './ContactSection';
+import FooterSection from './FooterSection';
 
 const App: React.FC = () => {
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
+        <ThemeContextProvider>
             <Navigation />
             <main>
                 <HeroSection />
@@ -18,7 +17,8 @@ const App: React.FC = () => {
                 <ProjectsSection />
                 <ContactSection />
             </main>
-        </ThemeProvider>
+            <FooterSection />
+        </ThemeContextProvider>
     );
 };
 

@@ -126,8 +126,9 @@ const HeroSection: React.FC = () => {
                                 color: 'text.secondary',
                             }}
                         >
-                            I craft exceptional digital experiences using modern technologies like React, Node.js,
-                            and TypeScript. Passionate about building scalable applications and solving complex problems.
+                            I'm a passionate full stack developer who loves creating modern web applications 
+                            with clean code and great user experiences. I specialize in React, Node.js, and 
+                            TypeScript, always eager to learn new technologies and tackle challenging problems.
                         </Typography>
 
                         {/* Skills */}

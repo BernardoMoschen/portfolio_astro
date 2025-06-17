@@ -19,10 +19,8 @@ import {
     Email,
     LinkedIn,
     GitHub,
-    Twitter,
     Send,
     LocationOn,
-    Phone,
 } from '@mui/icons-material';
 
 const ContactSection: React.FC = () => {
