@@ -40,7 +40,9 @@ const HeroSection: React.FC = () => {
                 minHeight: '100vh',
                 display: 'flex',
                 alignItems: 'center',
-                background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
+                background: theme.palette.mode === 'dark' 
+                    ? 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
+                    : 'linear-gradient(135deg, #f5f5f5 0%, #e3f2fd 50%, #bbdefb 100%)',
                 position: 'relative',
                 overflow: 'hidden',
             }}
@@ -54,7 +56,9 @@ const HeroSection: React.FC = () => {
                     right: 0,
                     bottom: 0,
                     opacity: 0.1,
-                    backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)',
+                    backgroundImage: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)'
+                        : 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0)',
                     backgroundSize: '20px 20px',
                 }}
             />
@@ -95,7 +99,9 @@ const HeroSection: React.FC = () => {
                                 fontSize: isMobile ? '2.5rem' : '3.5rem',
                                 fontWeight: 700,
                                 mb: 2,
-                                background: 'linear-gradient(45deg, #fff 30%, #3f51b5 90%)',
+                                background: theme.palette.mode === 'dark'
+                                    ? 'linear-gradient(45deg, #fff 30%, #3f51b5 90%)'
+                                    : 'linear-gradient(45deg, #1a1a1a 30%, #3f51b5 90%)',
                                 backgroundClip: 'text',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
@@ -144,10 +150,11 @@ const HeroSection: React.FC = () => {
                                         variant="outlined"
                                         sx={{
                                             borderColor: 'primary.main',
-                                            color: 'primary.light',
+                                            color: 'primary.main',
                                             '&:hover': {
                                                 backgroundColor: 'primary.main',
                                                 color: 'white',
+                                                transform: 'translateY(-2px)',
                                             },
                                             transition: 'all 0.3s ease',
                                         }}
@@ -187,7 +194,7 @@ const HeroSection: React.FC = () => {
                                     borderColor: 'primary.main',
                                     color: 'primary.main',
                                     '&:hover': {
-                                        borderColor: 'primary.light',
+                                        borderColor: 'primary.dark',
                                         backgroundColor: 'rgba(63, 81, 181, 0.1)',
                                     },
                                 }}
@@ -244,7 +251,9 @@ const HeroSection: React.FC = () => {
                     width: 100,
                     height: 100,
                     borderRadius: '50%',
-                    background: 'linear-gradient(45deg, rgba(63, 81, 181, 0.1) 30%, rgba(245, 0, 87, 0.1) 90%)',
+                    background: theme.palette.mode === 'dark'
+                        ? 'linear-gradient(45deg, rgba(63, 81, 181, 0.1) 30%, rgba(245, 0, 87, 0.1) 90%)'
+                        : 'linear-gradient(45deg, rgba(63, 81, 181, 0.05) 30%, rgba(245, 0, 87, 0.05) 90%)',
                     animation: 'float 6s ease-in-out infinite',
                     display: { xs: 'none', md: 'block' },
                 }}
