@@ -88,7 +88,9 @@ const Navigation: React.FC = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     p: 2,
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderBottom: theme.palette.mode === 'dark' 
+                        ? '1px solid rgba(255, 255, 255, 0.1)'
+                        : '1px solid rgba(0, 0, 0, 0.1)',
                 }}
             >
                 <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main' }}>
@@ -139,15 +141,21 @@ const Navigation: React.FC = () => {
                 position="fixed"
                 sx={{
                     backgroundColor: trigger
-                        ? 'rgba(10, 10, 10, 0.95)'
+                        ? theme.palette.mode === 'dark' 
+                            ? 'rgba(10, 10, 10, 0.95)'
+                            : 'rgba(250, 250, 250, 0.95)'
                         : 'transparent',
                     backdropFilter: trigger ? 'blur(10px)' : 'none',
                     boxShadow: trigger
-                        ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+                        ? theme.palette.mode === 'dark'
+                            ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+                            : '0 4px 20px rgba(0, 0, 0, 0.1)'
                         : 'none',
                     transition: 'all 0.3s ease',
                     border: trigger
-                        ? '1px solid rgba(255, 255, 255, 0.1)'
+                        ? theme.palette.mode === 'dark'
+                            ? '1px solid rgba(255, 255, 255, 0.1)'
+                            : '1px solid rgba(0, 0, 0, 0.1)'
                         : 'none',
                 }}
             >
