@@ -84,19 +84,19 @@ const ContactSection: React.FC = () => {
         {
             icon: <Email />,
             label: 'Email',
-            value: 'your.email@example.com',
-            link: 'mailto:your.email@example.com',
+            value: 'bernardo.moschen@example.com',
+            link: 'mailto:bernardo.moschen@example.com',
         },
-        {
-            icon: <Phone />,
-            label: 'Phone',
-            value: '+1 (555) 123-4567',
-            link: 'tel:+15551234567',
-        },
+        // {
+        //     icon: <Phone />,
+        //     label: 'Phone',
+        //     value: '+1 (555) 123-4567',
+        //     link: 'tel:+15551234567',
+        // },
         {
             icon: <LocationOn />,
             label: 'Location',
-            value: 'Your City, Country',
+            value: 'Porto Alegre - RS, Brazil',
             link: '',
         },
     ];

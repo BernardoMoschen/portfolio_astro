@@ -80,7 +80,7 @@ const HeroSection: React.FC = () => {
                                 boxShadow: '0 8px 32px rgba(63, 81, 181, 0.3)',
                                 mx: 'auto',
                             }}
-                            src="/profile_photo.jpeg"
+                            src="/profile-photo.jpeg"
                             alt="Bernardo Moschen"
                         >
                             YN
