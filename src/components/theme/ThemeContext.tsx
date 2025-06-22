@@ -67,8 +67,8 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: mode === 'dark' 
-            ? '0 4px 20px rgba(0, 0, 0, 0.25)' 
+          boxShadow: mode === 'dark'
+            ? '0 4px 20px rgba(0, 0, 0, 0.25)'
             : '0 4px 20px rgba(0, 0, 0, 0.1)',
         },
       },

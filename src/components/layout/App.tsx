@@ -1,11 +1,11 @@
 import React from 'react';
-import { ThemeContextProvider } from './ThemeContext';
+import { ThemeContextProvider } from '../theme';
 import Navigation from './Navigation';
-import HeroSection from './HeroSection';
-import AboutSection from './AboutSection';
-import ProjectsSection from './ProjectsSection';
-import ContactSection from './ContactSection';
-import FooterSection from './FooterSection';
+import { HeroSection } from '../sections/Hero';
+import { AboutSection } from '../sections/About';
+import { ProjectsSection } from '../sections/Projects';
+import { ContactSection } from '../sections/Contact';
+import { FooterSection } from '../sections/Footer';
 
 const App: React.FC = () => {
     return (

@@ -22,7 +22,7 @@ import {
     Close as CloseIcon,
     KeyboardArrowUp,
 } from '@mui/icons-material';
-import ThemeToggle from './ThemeToggle';
+import { ThemeToggle } from '../theme';
 
 const Navigation: React.FC = () => {
     const theme = useTheme();
