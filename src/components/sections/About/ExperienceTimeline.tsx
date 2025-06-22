@@ -7,6 +7,8 @@ import {
     ListItem,
     useTheme,
     useMediaQuery,
+    Chip,
+    Stack,
 } from '@mui/material';
 import {
     Timeline,
@@ -78,7 +80,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    boxShadow: '0 4px 15px rgba(63, 81, 181, 0.3)',
+                                    boxShadow: `0 4px 15px ${theme.palette.primary.main}50`,
                                 }}
                             >
                                 {getCategoryIcon(exp.iconType)}
@@ -86,7 +88,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                             {index < experiences.length - 1 && (
                                 <TimelineConnector
                                     sx={{
-                                        backgroundColor: 'rgba(63, 81, 181, 0.2)',
+                                        backgroundColor: `${theme.palette.primary.main}30`,
                                         width: 3,
                                     }}
                                 />
@@ -98,13 +100,13 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                 elevation={3}
                                 sx={{
                                     p: 3,
-                                    background: 'linear-gradient(135deg, rgba(63, 81, 181, 0.1) 0%, rgba(245, 0, 87, 0.05) 100%)',
+                                    background: `linear-gradient(135deg, ${theme.palette.primary.main}15 0%, ${theme.palette.secondary.main}08 100%)`,
                                     backdropFilter: 'blur(10px)',
                                     border: '1px solid rgba(255, 255, 255, 0.1)',
                                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                                     '&:hover': {
-                                        transform: 'translateY(-5px)',
-                                        boxShadow: '0 10px 30px rgba(63, 81, 181, 0.2)',
+                                        transform: 'translateY(-2px)',
+                                        boxShadow: `0 10px 30px ${theme.palette.primary.main}30`,
                                     },
                                 }}
                             >
@@ -123,7 +125,7 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                     variant="subtitle1"
                                     sx={{
                                         fontWeight: 500,
-                                        mb: 1,
+                                        mb: 2,
                                         color: 'secondary.main',
                                     }}
                                 >
@@ -144,9 +146,17 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                     </Typography>
                                 )}
 
-                                <List sx={{ listStyleType: 'disc' }}>
-                                    {exp.description.map((desc, descIndex) => (
-                                        <ListItem sx={{ display: 'list-item' }} key={descIndex}>
+                                {/* Job Description - Always Visible for SEO */}
+                                <List sx={{ listStyleType: 'disc', pl: 2 }}>
+                                    {exp.description.map((desc: string, descIndex: number) => (
+                                        <ListItem
+                                            sx={{
+                                                display: 'list-item',
+                                                py: 0.5,
+                                                px: 0,
+                                            }}
+                                            key={descIndex}
+                                        >
                                             <Typography
                                                 variant="body2"
                                                 sx={{
