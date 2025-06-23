@@ -8,14 +8,14 @@ interface ProfileAvatarProps {
     initials: string;
 }
 
-const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ 
-    isMobile, 
-    profileImage, 
-    name, 
-    initials 
+const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
+    isMobile,
+    profileImage,
+    name,
+    initials
 }) => {
     const theme = useTheme();
-    
+
     return (
         <Box sx={{ mb: isMobile ? 2 : 0 }}>
             <Avatar

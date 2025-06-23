@@ -3,7 +3,7 @@ import { Box, useTheme } from '@mui/material';
 
 const BackgroundElements: React.FC = () => {
     const theme = useTheme();
-    
+
     return (
         <>
             {/* Background Pattern */}

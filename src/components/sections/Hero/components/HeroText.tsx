@@ -8,14 +8,14 @@ interface HeroTextProps {
     description: string;
 }
 
-const HeroText: React.FC<HeroTextProps> = ({ 
-    isMobile, 
-    name, 
-    title, 
-    description 
+const HeroText: React.FC<HeroTextProps> = ({
+    isMobile,
+    name,
+    title,
+    description
 }) => {
     const theme = useTheme();
-    
+
     return (
         <>
             <Typography

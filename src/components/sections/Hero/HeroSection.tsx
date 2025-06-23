@@ -65,14 +65,14 @@ const HeroSection: React.FC = () => {
                             title={PERSONAL_INFO.title}
                             description={PERSONAL_INFO.description}
                         />
-                        
+
                         <SkillsSection skills={PERSONAL_INFO.skills} />
-                        
+
                         <ActionButtons
                             isMobile={isMobile}
                             onContactClick={() => scrollToSection('contact')}
                         />
-                        
+
                         <SocialLinks
                             githubUrl={PERSONAL_INFO.social.github}
                             linkedinUrl={PERSONAL_INFO.social.linkedin}

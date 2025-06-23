@@ -9,7 +9,7 @@ interface ActionButtonsProps {
 
 const ActionButtons: React.FC<ActionButtonsProps> = ({ isMobile, onContactClick }) => {
     const theme = useTheme();
-    
+
     return (
         <Stack
             direction={isMobile ? 'column' : 'row'}
