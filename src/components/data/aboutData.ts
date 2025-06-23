@@ -22,6 +22,35 @@ export interface Experience {
     iconType: 'work';
 }
 
+
+export type AudienceBrief = {
+    audience: string;
+    brief: string;
+};
+
+export const briefList: AudienceBrief[] = [
+    {
+        audience: 'For anyone',
+        brief:
+            'I design and develop scalable, user-focused applications that solve real-world problems. Whether it’s a sleek web platform or a complex backend system, I bring ideas to life with precision and care.',
+    },
+    {
+        audience: 'Recruiters',
+        brief:
+            'I’m a full-stack developer with a proven track record in building reliable, scalable solutions. With expertise in modern technologies and a commitment to clean code, I deliver results that drive business success."',
+    },
+    {
+        audience: 'Product Managers',
+        brief:
+            'I bring end-to-end technical expertise to support your product journey, from discovery to delivery. I’ll collaborate closely to align technical execution with your product vision, maximizing impact at every stage.',
+    },
+    {
+        audience: 'Engineers',
+        brief:
+            'I’m a developer who values efficiency, maintainability, and collaboration. I write clean, scalable code, optimize performance, and contribute to a strong engineering culture by sharing knowledge and solving challenges together.',
+    },
+];
+
 export const technicalAreas: TechnicalArea[] = [
     {
         category: 'Frontend Excellence',
