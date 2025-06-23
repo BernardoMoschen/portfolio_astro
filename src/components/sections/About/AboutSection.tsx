@@ -39,12 +39,10 @@ const AboutSection: React.FC = () => {
                 >
                     About Me
                 </Typography>
-
                 <Grid container spacing={4}>
                     <AboutContent />
                     <TechnicalExpertiseSection />
                 </Grid>
-
                 <ExperienceTimeline experiences={experiences} />
             </Container>
         </Box>
