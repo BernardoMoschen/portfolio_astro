@@ -129,7 +129,10 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
                                         color: 'secondary.main',
                                     }}
                                 >
-                                    {exp.company}
+                                    <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                                        {exp.company}
+                                    </a>
                                 </Typography>
 
                                 {isMobile && (

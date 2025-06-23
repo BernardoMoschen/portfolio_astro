@@ -69,8 +69,8 @@ export const experiences: Experience[] = [
     {
         role: 'Senior Full Stack Developer',
         company: 'Paradise Mobile',
-        companyUrl: 'https://www.linkedin.com/company/paradise-mobile/',
-        period: '2034 - Present',
+        companyUrl: 'https://www.linkedin.com/company/paradise-mobile/about',
+        period: '2024 - Present',
         description: [
             `Developed onboarding and self-service applications using React, Material UI, Recoil, and Jest,
             streamlining user experience and improving onboarding time by significantly reducing friction;`,
@@ -84,13 +84,39 @@ export const experiences: Experience[] = [
     {
         role: 'Mid-level Full Stack Engineer',
         company: 'Grupo Tiradentes',
-        companyUrl: 'https://www.linkedin.com/company/grupo-tiradentes/',
+        companyUrl: 'https://www.linkedin.com/company/grupo-tiradentes/about',
         period: '2022 - 2023',
         description: [
             `Developed a unified system for educational institutions, managing course offerings, student
 contracts, financing requests and business reporting, ensuring robust functionality and code quality;`,
             'Designed and implemented scalable front-end interfaces with React.js and Typescript, enhancing user experience for the whole company staff and their students',
             'Engineered back-end systems and APIs with C#, .NET, and PostgreSQL, streamlining workflows for transactions and users daily;',
+            'Collaborated in 100% SCRUM-based teams;'
+        ],
+        iconType: 'work',
+    },
+    {
+        role: 'Mid-level Full Stack Engineer',
+        company: 'ArcelorMittal Mines Canada',
+        companyUrl: 'https://www.linkedin.com/company/arcelormittal/about',
+        period: '2021 - 2022',
+        description: [
+            `Led the development of a web application for seamless integration of virtual and manual data, automating complex and manual processes, digitally transforming the way the corporation worked;`,
+            'Orchestrated scalable system architecture with Node.js, Sequelize.js, and Microsoft SQL Server, enabling robust data integration across diverse systems;',
+            'Implemented front-end interfaces with React.js and ensured code quality with Jest and Typescript, enhancing user experience all while providing innovative and productive ways of working;',
+            'Collaborated in 100% SCRUM-based teams;'
+        ],
+        iconType: 'work',
+    },
+    {
+        role: 'Full Stack Engineer',
+        company: 'Meta IT',
+        companyUrl: 'https://www.linkedin.com/company/metaoficial/about/',
+        period: '2021 - 2021',
+        description: [
+            `Coordinated different teams and participated in several projects across different fields of the market;`,
+            'Leveraged an wide range of technologies such as: Typescript, React, Vue, PHP, TypeORM, Adonis.js,Nest.js and many others;',
+            'Managed multiple databases: MySQL, SQL, Postgres, MongoDB and SQL Server;',
             'Collaborated in 100% SCRUM-based teams;'
         ],
         iconType: 'work',
