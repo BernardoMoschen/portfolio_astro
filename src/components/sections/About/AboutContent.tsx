@@ -1,72 +1,76 @@
-import React from 'react';
+import React, { useState, type SyntheticEvent } from 'react';
 import {
     Grid,
     Box,
     Typography,
-    useTheme,
-    useMediaQuery,
 } from '@mui/material';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+
+type AudienceBrief = {
+    audience: string;
+    brief: string;
+};
+
+const briefList: AudienceBrief[] = [
+    {
+        audience: 'For anyone',
+        brief:
+            'I design and develop scalable, user-focused applications that solve real-world problems. Whether it’s a sleek web platform or a complex backend system, I bring ideas to life with precision and care.',
+    },
+    {
+        audience: 'Recruiters',
+        brief:
+            'I’m a full-stack developer with a proven track record in building reliable, scalable solutions. With expertise in modern technologies and a commitment to clean code, I deliver results that drive business success."',
+    },
+    {
+        audience: 'Product Managers',
+        brief:
+            'I bring end-to-end technical expertise to support your product journey, from discovery to delivery. I’ll collaborate closely to align technical execution with your product vision, maximizing impact at every stage.',
+    },
+    {
+        audience: 'Engineers',
+        brief:
+            'I’m a developer who values efficiency, maintainability, and collaboration. I write clean, scalable code, optimize performance, and contribute to a strong engineering culture by sharing knowledge and solving challenges together.',
+    },
+];
 
 const AboutContent: React.FC = () => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const [selectedTab, setSelectedTab] = useState<number>(1);
+
+    const handleChange = (_event: SyntheticEvent, newValue: number) => {
+        setSelectedTab(newValue);
+    };
 
     return (
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12 }}>
             <Box sx={{ mb: 4 }}>
-                <Typography
-                    variant="h4"
-                    sx={{
-                        mb: 3,
-                        color: 'primary.main',
-                        fontSize: isMobile ? '1.5rem' : '2rem',
-                    }}
-                >
-                    Passionate Developer & Problem Solver
-                </Typography>
-
-                <Typography
-                    variant="body1"
-                    sx={{
-                        mb: 3,
-                        lineHeight: 1.8,
-                        color: 'text.secondary',
-                        fontSize: '1.1rem',
-                    }}
-                >
-                    I'm a dedicated full-stack developer passionate about creating modern web applications
-                    that solve real-world problems. My journey in tech began with curiosity and has evolved
-                    into a love for building scalable, user-focused solutions using cutting-edge technologies.
-                </Typography>
-
-                <Typography
-                    variant="body1"
-                    sx={{
-                        mb: 3,
-                        lineHeight: 1.8,
-                        color: 'text.secondary',
-                        fontSize: '1.1rem',
-                    }}
-                >
-                    I believe in writing clean, maintainable code and following industry best practices.
-                    Whether I'm architecting backend APIs or crafting intuitive user interfaces,
-                    I approach every project with attention to detail and a focus on performance and accessibility.
-                </Typography>
-
-                <Typography
-                    variant="body1"
-                    sx={{
-                        lineHeight: 1.8,
-                        color: 'text.secondary',
-                        fontSize: '1.1rem',
-                    }}
-                >
-                    When I'm not coding, you can find me exploring new technologies, contributing to
-                    open source projects, or learning about the latest developments in web development.
-                    I'm always excited about collaborating on innovative projects and bringing ideas to life.
-                </Typography>
+                <TabContext value={selectedTab}>
+                    <TabList onChange={handleChange} aria-label="about-section-tabs">
+                        {briefList.map(({ audience }, index) => (
+                            <Tab label={audience} value={index} />
+                        ))}
+                    </TabList>
+                    {briefList.map(({ brief }, index) => (
+                        <TabPanel value={index} >
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    mb: 3,
+                                    lineHeight: 1.8,
+                                    color: 'text.secondary',
+                                    fontSize: '1.8rem',
+                                }}
+                            >
+                                {brief}
+                            </Typography>
+                        </TabPanel>
+                    ))}
+                </TabContext>
             </Box>
-        </Grid>
+        </Grid >
     );
 };
 

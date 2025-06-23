@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Card,
     CardContent,
     Avatar,
     Box,
     Typography,
+    useTheme,
 } from '@mui/material';
 import type { TechnicalArea } from '../../data/aboutData';
 import TechnologyChip from './TechnologyChip';
@@ -15,6 +16,9 @@ interface TechnicalExpertiseCardProps {
 }
 
 const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area }) => {
+    const [isDescriptionHovered, setIsDescriptionHovered] = useState(false);
+    const theme = useTheme();
+
     const getHighlightColor = (highlight: string) => {
         switch (highlight) {
             case 'Expert':
@@ -29,7 +33,9 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
     return (
         <Card
             sx={{
-                background: 'linear-gradient(135deg, rgba(63, 81, 181, 0.08) 0%, rgba(245, 0, 87, 0.03) 100%)',
+                background: theme.palette.mode === 'dark'
+                    ? `linear-gradient(135deg, ${theme.palette.primary.main}15 0%, ${theme.palette.secondary.main}08 100%)`
+                    : `linear-gradient(135deg, ${theme.palette.primary.main}08 0%, ${theme.palette.secondary.main}05 100%)`,
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 transition: 'all 0.3s ease',
@@ -52,7 +58,10 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
                     >
                         {getCategoryIcon(area.iconType)}
                     </Avatar>
-                    <Box sx={{ flex: 1 }}>
+                    <Box sx={{ flex: 1 }}
+                        onMouseEnter={() => setIsDescriptionHovered(true)}
+                        onMouseLeave={() => setIsDescriptionHovered(false)}
+                    >
                         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                             <Typography
                                 variant="h6"
@@ -79,16 +88,46 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
                                 {area.highlight}
                             </Box>
                         </Box>
-                        <Typography
-                            variant="body2"
+                        <Box
                             sx={{
-                                color: 'text.secondary',
+                                position: 'relative',
+                                minHeight: 48,
                                 mb: 2,
-                                lineHeight: 1.5
+                                cursor: 'pointer',
                             }}
+
                         >
-                            {area.description}
-                        </Typography>
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    color: 'text.secondary',
+                                    lineHeight: 1.5,
+                                    opacity: isDescriptionHovered ? 0 : 1,
+                                    transform: isDescriptionHovered ? 'translateY(-10px)' : 'translateY(0)',
+                                    transition: 'all 0.3s ease',
+                                    position: isDescriptionHovered ? 'absolute' : 'static',
+                                    width: '100%',
+                                }}
+                            >
+                                {area.description}
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    color: 'secondary.light',
+                                    lineHeight: 1.5,
+                                    fontStyle: 'italic',
+                                    fontWeight: 500,
+                                    opacity: isDescriptionHovered ? 1 : 0,
+                                    transform: isDescriptionHovered ? 'translateY(0)' : 'translateY(10px)',
+                                    transition: 'all 0.3s ease',
+                                    position: isDescriptionHovered ? 'static' : 'absolute',
+                                    width: '100%',
+                                }}
+                            >
+                                {area.descriptionHighlight}
+                            </Typography>
+                        </Box>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                             {area.technologies.map((tech, techIndex) => (
                                 <TechnologyChip key={techIndex} technology={tech} />

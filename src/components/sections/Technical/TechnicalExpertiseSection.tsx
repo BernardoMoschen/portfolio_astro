@@ -14,7 +14,7 @@ const TechnicalExpertiseSection: React.FC = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12 }}>
             <Typography
                 variant="h5"
                 sx={{
@@ -25,7 +25,6 @@ const TechnicalExpertiseSection: React.FC = () => {
             >
                 Technical Expertise
             </Typography>
-
             <Stack spacing={3}>
                 {technicalAreas.map((area, index) => (
                     <TechnicalExpertiseCard key={index} area={area} />

@@ -9,6 +9,7 @@ export interface TechnicalArea {
     iconType: 'devices' | 'storage' | 'cloud';
     technologies: Technology[];
     description: string;
+    descriptionHighlight: string;
     highlight: 'Expert' | 'Advanced' | 'Proficient';
 }
 
@@ -33,7 +34,8 @@ export const technicalAreas: TechnicalArea[] = [
             { name: 'Jest', iconColor: '#C21325', iconType: 'jest' },
             { name: 'Next.js', iconColor: '#000000', iconType: 'nextjs' },
         ],
-        description: 'Building responsive, accessible user experiences with modern frameworks',
+        description: `Building responsive, accessible user experiences with modern frameworks and libraries`,
+        descriptionHighlight: 'I write JavaScript that works (after a few Stack Overflow dives)',
         highlight: 'Expert'
     },
     {
@@ -48,6 +50,7 @@ export const technicalAreas: TechnicalArea[] = [
             { name: 'Microservices', iconColor: '#4ECDC4', iconType: 'server' },
         ],
         description: 'Scalable server-side solutions and API design',
+        descriptionHighlight:'I turn APIs into magic—or at least functioning endpoints',
         highlight: 'Advanced'
     },
     {
@@ -61,6 +64,7 @@ export const technicalAreas: TechnicalArea[] = [
             { name: 'CI/CD', iconColor: '#2196F3', iconType: 'server' },
         ],
         description: 'Data architecture and cloud infrastructure management',
+        descriptionHighlight:'I send code to production and pray nothing breaks.' ,
         highlight: 'Proficient'
     },
 ];
