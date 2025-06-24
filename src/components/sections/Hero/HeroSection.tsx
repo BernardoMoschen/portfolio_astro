@@ -40,25 +40,27 @@ const HeroSection: React.FC = () => {
             }}
         >
             <BackgroundElements />
-
             <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: isMobile ? 'column' : 'row',
                         alignItems: 'center',
-                        gap: 4,
+                        gap: isMobile ? 2 : 6,
                         textAlign: isMobile ? 'center' : 'left',
+                        minHeight: '80vh',
                     }}
                 >
-                    <ProfileAvatar
-                        isMobile={isMobile}
-                        profileImage={PERSONAL_INFO.profileImage}
-                        name={PERSONAL_INFO.name}
-                        initials={PERSONAL_INFO.initials}
-                    />
+                    <Box sx={{ flex: isMobile ? 'none' : '0 0 auto' }}>
+                        <ProfileAvatar
+                            isMobile={isMobile}
+                            profileImage={PERSONAL_INFO.profileImage}
+                            name={PERSONAL_INFO.name}
+                            initials={PERSONAL_INFO.initials}
+                        />
+                    </Box>
 
-                    <Box sx={{ flex: 1 }}>
+                    <Box sx={{ flex: 1, maxWidth: isMobile ? '100%' : 600 }}>
                         <HeroText
                             isMobile={isMobile}
                             name={PERSONAL_INFO.name}

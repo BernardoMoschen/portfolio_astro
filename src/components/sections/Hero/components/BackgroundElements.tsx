@@ -38,6 +38,22 @@ const BackgroundElements: React.FC = () => {
                     display: { xs: 'none', md: 'block' },
                 }}
             />
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: '40%',
+                    right: '30%',
+                    width: 100,
+                    height: 100,
+                    borderRadius: '20%',
+                    rotate: '-30deg',
+                    background: theme.palette.mode === 'dark'
+                        ? `linear-gradient(45deg, ${theme.palette.primary.main}20 30%, ${theme.palette.secondary.main}20 90%)`
+                        : `linear-gradient(45deg, ${theme.palette.primary.main}10 30%, ${theme.palette.secondary.main}10 90%)`,
+                    animation: 'float 2s ease-in-out infinite',
+                    display: { xs: 'none', md: 'block' },
+                }}
+            />
         </>
     );
 };
