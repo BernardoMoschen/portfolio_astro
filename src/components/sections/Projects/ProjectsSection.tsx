@@ -24,6 +24,7 @@ import {
     Build,
     Schedule,
 } from '@mui/icons-material';
+import { projects } from '../../data/projectsData';
 
 // Helper function to get status information
 const getStatusInfo = (status: string) => {
@@ -48,7 +49,7 @@ const getStatusInfo = (status: string) => {
             };
         default:
             return {
-                label: 'Completed',
+                label: 'AA',
                 color: 'success' as const,
                 icon: <CheckCircle />,
             };
@@ -58,69 +59,6 @@ const getStatusInfo = (status: string) => {
 const ProjectsSection: React.FC = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-    const projects = [
-        {
-            title: 'Portfolio Website',
-            description: 'A modern, responsive portfolio website built with Astro, React, and Material UI. Features dark theme, smooth animations, responsive design, and optimized performance.',
-            image: '/project-portfolio.jpg',
-            technologies: ['Astro', 'React', 'Material UI', 'TypeScript'],
-            githubUrl: 'https://github.com/BernardoMoschen/portfolio_astro',
-            liveUrl: 'https://bernardomoschen.dev', // Update with your actual domain
-            featured: true,
-            status: 'completed'
-        },
-        {
-            title: 'E-Commerce Platform',
-            description: 'Full-stack e-commerce solution with user authentication, payment processing, inventory management, and admin dashboard. Currently in development.',
-            image: '/project-placeholder.jpg',
-            technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Material UI'],
-            githubUrl: '',
-            liveUrl: '',
-            featured: true,
-            status: 'wip'
-        },
-        {
-            title: 'Task Management App',
-            description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-            image: '/project-placeholder.jpg',
-            technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Socket.io'],
-            githubUrl: '',
-            liveUrl: '',
-            featured: false,
-            status: 'planning'
-        },
-        {
-            title: 'Weather Dashboard',
-            description: 'Responsive weather application with detailed forecasts, interactive maps, and data visualization using modern APIs.',
-            image: '/project-placeholder.jpg',
-            technologies: ['React', 'TypeScript', 'Chart.js', 'OpenWeatherMap API'],
-            githubUrl: '',
-            liveUrl: '',
-            featured: false,
-            status: 'planning'
-        },
-        {
-            title: 'Social Media API',
-            description: 'RESTful API for social media platform with authentication, real-time notifications, and comprehensive testing suite.',
-            image: '/project-placeholder.jpg',
-            technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Jest'],
-            githubUrl: '',
-            liveUrl: '',
-            featured: false,
-            status: 'planning'
-        },
-        {
-            title: 'Real Estate Platform',
-            description: 'Comprehensive real estate platform with property listings, virtual tours, and mortgage calculator.',
-            image: '/project-placeholder.jpg',
-            technologies: ['Vue.js', 'Node.js', 'MySQL', 'AWS S3', 'Mapbox'],
-            githubUrl: '',
-            liveUrl: '',
-            featured: false,
-            status: 'planning'
-        },
-    ];
 
     const featuredProjects = projects.filter(project => project.featured);
     const otherProjects = projects.filter(project => !project.featured);
@@ -178,12 +116,12 @@ const ProjectsSection: React.FC = () => {
                         label="FEATURED WORK"
                         sx={{
                             backgroundColor: theme.palette.mode === 'dark'
-                                ? theme.palette.primary.dark + '40'
-                                : theme.palette.primary.light + '20',
+                                ? 'rgba(255, 255, 255, 0.08)'
+                                : 'rgba(0, 0, 0, 0.04)',
                             color: theme.palette.primary.main,
                             fontWeight: 600,
                             letterSpacing: '0.5px',
-                            border: `1px solid ${theme.palette.primary.main}40`,
+                            border: `1px solid ${theme.palette.primary.main}`,
                         }}
                     />
                 </Box>
@@ -252,8 +190,8 @@ const ProjectsSection: React.FC = () => {
                                             ? `0 20px 40px ${theme.palette.primary.dark}35`
                                             : `0 20px 40px ${theme.palette.primary.main}25`,
                                         borderColor: theme.palette.mode === 'dark'
-                                            ? theme.palette.primary.main + '50'
-                                            : theme.palette.primary.main + '40',
+                                            ? `${theme.palette.primary.main}50`
+                                            : `${theme.palette.primary.main}40`,
                                     },
                                 }}
                             >
@@ -303,19 +241,17 @@ const ProjectsSection: React.FC = () => {
                                     </CardMedia>
 
                                     {/* Status and Featured Chips */}
-                                    <Box sx={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 1, flexDirection: 'column' }}>
-                                        <Chip
-                                            icon={<Star />}
-                                            label="Featured"
-                                            size="small"
-                                            sx={{
-                                                backgroundColor: theme.palette.secondary.main,
-                                                color: theme.palette.secondary.contrastText,
-                                                fontWeight: 600,
-                                                boxShadow: `0 2px 8px ${theme.palette.secondary.main}40`,
-                                            }}
-                                        />
-                                        <Chip
+                                    <Box sx={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 1, flexDirection: 'column' }}>                        <Chip
+                                        icon={<Star />}
+                                        label="Featured"
+                                        size="small"
+                                        sx={{
+                                            backgroundColor: theme.palette.secondary.main,
+                                            color: theme.palette.secondary.contrastText,
+                                            fontWeight: 600,
+                                            boxShadow: `0 2px 8px rgba(0,0,0,0.2)`,
+                                        }}
+                                    />                        <Chip
                                             icon={getStatusInfo(project.status).icon}
                                             label={getStatusInfo(project.status).label}
                                             size="small"
@@ -324,6 +260,21 @@ const ProjectsSection: React.FC = () => {
                                             sx={{
                                                 fontWeight: 600,
                                                 boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                                // Override any conflicting background styles
+                                                '&.MuiChip-colorSuccess': {
+                                                    backgroundColor: theme.palette.success.main,
+                                                    color: theme.palette.success.contrastText,
+                                                },
+                                                '&.MuiChip-colorWarning': {
+                                                    backgroundColor: theme.palette.warning.main,
+                                                    color: theme.palette.warning.contrastText,
+                                                },
+                                                '&.MuiChip-colorInfo': {
+                                                    backgroundColor: theme.palette.info.main,
+                                                    color: theme.palette.info.contrastText,
+                                                },
+                                                // Ensure no background images override the solid colors
+                                                backgroundImage: 'none !important',
                                             }}
                                         />
                                     </Box>
@@ -363,18 +314,16 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: theme.palette.primary.main + '60',
+                                                    borderColor: theme.palette.primary.main,
                                                     color: theme.palette.primary.main,
                                                     fontSize: '0.8rem',
                                                     fontWeight: 500,
-                                                    backgroundColor: theme.palette.mode === 'dark'
-                                                        ? theme.palette.primary.dark + '20'
-                                                        : theme.palette.primary.light + '15',
+                                                    backgroundColor: 'transparent',
                                                     '&:hover': {
                                                         borderColor: theme.palette.primary.main,
                                                         backgroundColor: theme.palette.mode === 'dark'
-                                                            ? theme.palette.primary.dark + '30'
-                                                            : theme.palette.primary.light + '25',
+                                                            ? 'rgba(255, 255, 255, 0.08)'
+                                                            : 'rgba(0, 0, 0, 0.04)',
                                                     },
                                                 }}
                                             />
@@ -393,10 +342,10 @@ const ProjectsSection: React.FC = () => {
                                             variant="outlined"
                                             sx={{
                                                 color: theme.palette.text.secondary,
-                                                borderColor: theme.palette.text.secondary + '60',
+                                                borderColor: `${theme.palette.text.secondary}60`,
                                                 '&:hover': {
                                                     borderColor: theme.palette.text.secondary,
-                                                    backgroundColor: theme.palette.text.secondary + '10',
+                                                    backgroundColor: `${theme.palette.text.secondary}10`,
                                                 },
                                             }}
                                         >
@@ -486,8 +435,8 @@ const ProjectsSection: React.FC = () => {
                                             ? `0 12px 24px ${theme.palette.primary.dark}30`
                                             : `0 12px 24px ${theme.palette.primary.main}20`,
                                         borderColor: theme.palette.mode === 'dark'
-                                            ? theme.palette.primary.main + '40'
-                                            : theme.palette.primary.main + '30',
+                                            ? `${theme.palette.primary.main}40`
+                                            : `${theme.palette.primary.main}30`,
                                     },
                                 }}
                             >
@@ -503,14 +452,17 @@ const ProjectsSection: React.FC = () => {
                                                 }}
                                             >
                                                 {project.title}
-                                            </Typography>
-                                            <Chip
+                                            </Typography>                            <Chip
                                                 icon={getStatusInfo(project.status).icon}
                                                 label={getStatusInfo(project.status).label}
                                                 size="small"
                                                 color={getStatusInfo(project.status).color}
                                                 variant="outlined"
-                                                sx={{ fontSize: '0.75rem' }}
+                                                sx={{
+                                                    fontSize: '0.75rem',
+                                                    // Ensure no background images override the chip styling
+                                                    backgroundImage: 'none !important',
+                                                }}
                                             />
                                         </Box>
                                         <Box>
@@ -576,14 +528,15 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: theme.palette.mode === 'dark'
-                                                        ? theme.palette.primary.main + '40'
-                                                        : theme.palette.primary.main + '30',
+                                                    borderColor: theme.palette.primary.main,
                                                     color: theme.palette.text.secondary,
                                                     fontSize: '0.7rem',
-                                                    backgroundColor: theme.palette.mode === 'dark'
-                                                        ? theme.palette.primary.dark + '10'
-                                                        : theme.palette.primary.light + '08',
+                                                    backgroundColor: 'transparent',
+                                                    '&:hover': {
+                                                        backgroundColor: theme.palette.mode === 'dark'
+                                                            ? 'rgba(255, 255, 255, 0.05)'
+                                                            : 'rgba(0, 0, 0, 0.03)',
+                                                    },
                                                 }}
                                             />
                                         ))}
@@ -593,14 +546,15 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: theme.palette.mode === 'dark'
-                                                        ? theme.palette.secondary.main + '40'
-                                                        : theme.palette.secondary.main + '30',
+                                                    borderColor: theme.palette.secondary.main,
                                                     color: theme.palette.secondary.main,
                                                     fontSize: '0.7rem',
-                                                    backgroundColor: theme.palette.mode === 'dark'
-                                                        ? theme.palette.secondary.dark + '10'
-                                                        : theme.palette.secondary.light + '08',
+                                                    backgroundColor: 'transparent',
+                                                    '&:hover': {
+                                                        backgroundColor: theme.palette.mode === 'dark'
+                                                            ? 'rgba(255, 255, 255, 0.05)'
+                                                            : 'rgba(0, 0, 0, 0.03)',
+                                                    },
                                                 }}
                                             />
                                         )}
@@ -640,8 +594,8 @@ const ProjectsSection: React.FC = () => {
                             '&:hover': {
                                 borderColor: theme.palette.primary.dark,
                                 backgroundColor: theme.palette.mode === 'dark'
-                                    ? theme.palette.primary.dark + '15'
-                                    : theme.palette.primary.light + '10',
+                                    ? 'rgba(255, 255, 255, 0.08)'
+                                    : 'rgba(0, 0, 0, 0.04)',
                                 transform: 'translateY(-2px)',
                             },
                         }}
