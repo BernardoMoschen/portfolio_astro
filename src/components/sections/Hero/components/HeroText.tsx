@@ -26,7 +26,8 @@ const HeroText: React.FC<HeroTextProps> = ({
                     mb: 1,
                     background: theme.palette.mode === 'dark'
                         ? `linear-gradient(45deg, ${theme.palette.text.primary} 30%, ${theme.palette.primary.light} 90%)`
-                        : `linear-gradient(45deg, ${theme.palette.text.primary} 30%, ${theme.palette.primary.main} 90%)`,
+                        : `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.secondary.main} 90%)`,
+
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -40,7 +41,7 @@ const HeroText: React.FC<HeroTextProps> = ({
                     fontSize: isMobile ? '1.5rem' : '2rem',
                     fontWeight: 400,
                     mb: 3,
-                    color: 'secondary.main',
+                    color: theme.palette.mode === 'dark' ? 'secondary.main' : 'black',
                 }}
             >
                 {title}
@@ -50,7 +51,6 @@ const HeroText: React.FC<HeroTextProps> = ({
                 sx={{
                     fontSize: '1.1rem',
                     mb: 4,
-                    maxWidth: 600,
                     lineHeight: 1.7,
                     color: 'text.secondary',
                 }}
