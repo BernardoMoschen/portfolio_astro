@@ -10,7 +10,6 @@ import {
 import {
     ProfileAvatar,
     HeroText,
-    SkillsSection,
     ActionButtons,
     ScrollIndicator,
     BackgroundElements,
@@ -36,10 +35,12 @@ const HeroSection: React.FC = () => {
                     : `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.light}10 50%, ${theme.palette.secondary.light}20 100%)`,
                 position: 'relative',
                 overflow: 'hidden',
+                // Add padding bottom on mobile to prevent content cutoff
+                pb: isMobile ? 8 : 0,
             }}
         >
             <BackgroundElements />
-            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, py: isMobile ? 4 : 0 }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -47,8 +48,10 @@ const HeroSection: React.FC = () => {
                         alignItems: 'center',
                         gap: isMobile ? 4 : 8,
                         textAlign: isMobile ? 'center' : 'left',
-                        minHeight: '80vh',
+                        minHeight: isMobile ? 'auto' : '80vh',
                         width: '100%',
+                        // Ensure content doesn't get too close to edges on mobile
+                        px: isMobile ? 2 : 0,
                     }}
                 >
                     <Box
@@ -84,9 +87,6 @@ const HeroSection: React.FC = () => {
                             title={PERSONAL_INFO.title}
                             description={PERSONAL_INFO.description}
                         />
-
-                        <SkillsSection skills={PERSONAL_INFO.skills} />
-
                         <ActionButtons
                             isMobile={isMobile}
                             onContactClick={() => scrollToSection('contact')}
