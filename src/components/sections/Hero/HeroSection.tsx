@@ -12,7 +12,6 @@ import {
     HeroText,
     SkillsSection,
     ActionButtons,
-    SocialLinks,
     ScrollIndicator,
     BackgroundElements,
 } from './components';
@@ -46,21 +45,39 @@ const HeroSection: React.FC = () => {
                         display: 'flex',
                         flexDirection: isMobile ? 'column' : 'row',
                         alignItems: 'center',
-                        gap: isMobile ? 2 : 6,
+                        gap: isMobile ? 4 : 8,
                         textAlign: isMobile ? 'center' : 'left',
                         minHeight: '80vh',
+                        width: '100%',
                     }}
                 >
-                    <Box sx={{ flex: isMobile ? 'none' : '0 0 auto' }}>
+                    <Box
+                        sx={{
+                            flex: isMobile ? 'none' : '0 0 auto',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: isMobile ? '100%' : 'auto',
+                        }}
+                    >
                         <ProfileAvatar
                             isMobile={isMobile}
                             profileImage={PERSONAL_INFO.profileImage}
                             name={PERSONAL_INFO.name}
                             initials={PERSONAL_INFO.initials}
+                            githubUrl={PERSONAL_INFO.social.github}
+                            linkedinUrl={PERSONAL_INFO.social.linkedin}
                         />
                     </Box>
 
-                    <Box sx={{ flex: 1, maxWidth: isMobile ? '100%' : 600 }}>
+                    <Box
+                        sx={{
+                            flex: 1,
+                            maxWidth: isMobile ? '100%' : 600,
+                            // Add margin to account for floating elements
+                            ml: isMobile ? 0 : 2,
+                            mr: isMobile ? 0 : 4,
+                        }}
+                    >
                         <HeroText
                             isMobile={isMobile}
                             name={PERSONAL_INFO.name}
@@ -73,11 +90,6 @@ const HeroSection: React.FC = () => {
                         <ActionButtons
                             isMobile={isMobile}
                             onContactClick={() => scrollToSection('contact')}
-                        />
-
-                        <SocialLinks
-                            githubUrl={PERSONAL_INFO.social.github}
-                            linkedinUrl={PERSONAL_INFO.social.linkedin}
                         />
                     </Box>
                 </Box>

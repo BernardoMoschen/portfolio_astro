@@ -1,44 +1,54 @@
 import React from 'react';
-import { Box, Avatar, useTheme, Typography, Card, CardContent, Rating, Chip } from '@mui/material';
-import { Code, Star, ArrowUpward, ArrowDownward } from '@mui/icons-material';
+import { Box, Avatar, useTheme, Typography, Card, CardContent, IconButton, Tooltip } from '@mui/material';
+import { LinkedIn, GitHub, ArrowUpward, ArrowDownward } from '@mui/icons-material';
 
 interface ProfileAvatarProps {
     isMobile: boolean;
     profileImage: string;
     name: string;
     initials: string;
+    githubUrl?: string;
+    linkedinUrl?: string;
 }
 
 const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
     isMobile,
     profileImage,
     name,
-    initials
+    initials,
+    githubUrl,
+    linkedinUrl,
 }) => {
     const theme = useTheme();
 
     return (
-        <Box 
-            sx={{ 
-                mb: isMobile ? 2 : 0,
+        <Box
+            sx={{
+                mb: isMobile ? 3 : 0,
                 position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: 400,
+                minHeight: isMobile ? 350 : 450,
                 width: '100%',
-                maxWidth: 500,
+                maxWidth: isMobile ? 350 : 600,
+                mx: 'auto',
+                // Add padding to prevent overlapping with adjacent elements
+                px: isMobile ? 4 : 8,
+                py: isMobile ? 2 : 4,
             }}
         >
             {/* Background decorative circles */}
             <Box
                 sx={{
                     position: 'absolute',
-                    width: 350,
-                    height: 350,
+                    width: isMobile ? 280 : 350,
+                    height: isMobile ? 280 : 350,
                     borderRadius: '50%',
-                    border: `3px dashed ${theme.palette.primary.main}`,
-                    opacity: 0.3,
+                    border: theme.palette.mode === 'dark'
+                        ? `3px dashed ${theme.palette.primary.main}`
+                        : `4px dashed ${theme.palette.primary.main}`,
+                    opacity: theme.palette.mode === 'dark' ? 0.3 : 0.6,
                     animation: 'rotate 20s linear infinite',
                     '@keyframes rotate': {
                         '0%': { transform: 'rotate(0deg)' },
@@ -46,18 +56,18 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     },
                 }}
             />
-            
+
             {/* Inner decorative circle */}
             <Box
                 sx={{
                     position: 'absolute',
-                    width: 280,
-                    height: 280,
+                    width: isMobile ? 220 : 280,
+                    height: isMobile ? 220 : 280,
                     borderRadius: '50%',
                     background: theme.palette.mode === 'dark'
                         ? `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}30)`
-                        : `linear-gradient(135deg, ${theme.palette.primary.main}10, ${theme.palette.secondary.main}15)`,
-                    opacity: 0.7,
+                        : `linear-gradient(135deg, ${theme.palette.primary.main}25, ${theme.palette.secondary.main}35)`,
+                    opacity: theme.palette.mode === 'dark' ? 0.7 : 0.8,
                 }}
             />
 
@@ -65,11 +75,12 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
             <Box
                 sx={{
                     position: 'absolute',
-                    left: isMobile ? -20 : -40,
+                    left: isMobile ? -30 : -60,
                     top: '50%',
                     transform: 'translateY(-50%)',
                     textAlign: 'center',
                     zIndex: 2,
+                    minWidth: isMobile ? 60 : 80,
                 }}
             >
                 <Typography
@@ -77,9 +88,12 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         fontWeight: 800,
                         color: 'primary.main',
-                        fontSize: isMobile ? '2.5rem' : '3.5rem',
+                        fontSize: isMobile ? '2rem' : '3.5rem',
                         lineHeight: 1,
-                        textShadow: `2px 2px 4px ${theme.palette.primary.main}40`,
+                        textShadow: theme.palette.mode === 'dark'
+                            ? `2px 2px 4px ${theme.palette.primary.main}40`
+                            : `3px 3px 6px ${theme.palette.primary.main}60`,
+                        filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.3))',
                     }}
                 >
                     05
@@ -89,43 +103,45 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         color: 'text.secondary',
                         fontWeight: 600,
-                        fontSize: '0.7rem',
+                        fontSize: isMobile ? '0.6rem' : '0.7rem',
                         lineHeight: 1.2,
                         display: 'block',
-                        transform: 'rotate(-90deg)',
+                        transform: isMobile ? 'none' : 'rotate(-90deg)',
                         transformOrigin: 'center',
                         whiteSpace: 'nowrap',
-                        mt: 1,
+                        mt: isMobile ? 0.5 : 1,
                     }}
                 >
-                    YEARS
+                    {isMobile ? 'YRS' : 'YEARS'}
                 </Typography>
                 <Typography
                     variant="caption"
                     sx={{
                         color: 'text.secondary',
                         fontWeight: 600,
-                        fontSize: '0.7rem',
+                        fontSize: isMobile ? '0.6rem' : '0.7rem',
                         lineHeight: 1.2,
                         display: 'block',
-                        transform: 'rotate(-90deg)',
+                        transform: isMobile ? 'none' : 'rotate(-90deg)',
                         transformOrigin: 'center',
                         whiteSpace: 'nowrap',
                     }}
                 >
-                    EXPERIENCE
+                    {isMobile ? 'EXP' : 'EXPERIENCE'}
                 </Typography>
             </Box>
 
             {/* Main Avatar */}
             <Avatar
                 sx={{
-                    width: isMobile ? 180 : 220,
-                    height: isMobile ? 180 : 220,
-                    border: `5px solid ${theme.palette.background.paper}`,
+                    width: isMobile ? 160 : 220,
+                    height: isMobile ? 160 : 220,
+                    border: theme.palette.mode === 'dark'
+                        ? `5px solid ${theme.palette.background.paper}`
+                        : `6px solid ${theme.palette.background.paper}`,
                     boxShadow: theme.palette.mode === 'dark'
                         ? `0 20px 40px ${theme.palette.primary.main}40, 0 10px 20px rgba(0,0,0,0.3)`
-                        : `0 20px 40px ${theme.palette.primary.main}30, 0 10px 20px rgba(0,0,0,0.2)`,
+                        : `0 25px 50px ${theme.palette.primary.main}50, 0 15px 30px rgba(74, 103, 65, 0.4), 0 0 0 2px ${theme.palette.primary.main}20`,
                     position: 'relative',
                     zIndex: 3,
                     transition: 'all 0.3s ease',
@@ -133,7 +149,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                         transform: 'scale(1.05)',
                         boxShadow: theme.palette.mode === 'dark'
                             ? `0 25px 50px ${theme.palette.primary.main}50, 0 15px 30px rgba(0,0,0,0.4)`
-                            : `0 25px 50px ${theme.palette.primary.main}40, 0 15px 30px rgba(0,0,0,0.3)`,
+                            : `0 30px 60px ${theme.palette.primary.main}60, 0 20px 40px rgba(74, 103, 65, 0.5), 0 0 0 3px ${theme.palette.primary.main}30`,
                     }
                 }}
                 src={profileImage}
@@ -142,21 +158,23 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                 {initials}
             </Avatar>
 
-            {/* Floating Skills Card */}
+            {/* Floating Social Links Card */}
             <Card
                 sx={{
                     position: 'absolute',
-                    right: isMobile ? -10 : -30,
-                    top: 60,
-                    minWidth: 140,
+                    right: isMobile ? -25 : -50,
+                    top: isMobile ? 40 : 0,
+                    minWidth: isMobile ? 120 : 140,
                     background: theme.palette.mode === 'dark'
                         ? `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}20 100%)`
-                        : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}10 100%)`,
-                    backdropFilter: 'blur(10px)',
-                    border: `1px solid ${theme.palette.primary.main}30`,
+                        : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.main}15 100%)`,
+                    backdropFilter: 'blur(12px)',
+                    border: theme.palette.mode === 'dark'
+                        ? `1px solid ${theme.palette.primary.main}30`
+                        : `2px solid ${theme.palette.primary.main}40`,
                     boxShadow: theme.palette.mode === 'dark'
                         ? `0 8px 32px ${theme.palette.primary.main}40`
-                        : `0 8px 32px ${theme.palette.primary.main}30`,
+                        : `0 12px 40px ${theme.palette.primary.main}50, 0 4px 12px rgba(74, 103, 65, 0.3)`,
                     zIndex: 4,
                     animation: 'float 3s ease-in-out infinite',
                     '@keyframes float': {
@@ -165,35 +183,85 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     },
                 }}
             >
-                <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                        <Code sx={{ color: 'primary.main', fontSize: 16, mr: 0.5 }} />
-                        <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.primary' }}>
-                            Skills Rating
-                        </Typography>
-                    </Box>
-                    <Rating 
-                        value={4.9} 
-                        precision={0.1} 
-                        readOnly 
-                        size="small"
+                <CardContent sx={{ p: isMobile ? 1.5 : 2, '&:last-child': { pb: isMobile ? 1.5 : 2 } }}>
+                    <Typography
+                        variant="caption"
                         sx={{
-                            '& .MuiRating-iconFilled': {
-                                color: 'secondary.main',
-                            }
-                        }}
-                    />
-                    <Typography 
-                        variant="h6" 
-                        sx={{ 
-                            fontWeight: 700, 
-                            color: 'primary.main',
-                            fontSize: '1.1rem',
-                            mt: 0.5
+                            fontWeight: 600,
+                            color: 'text.primary',
+                            fontSize: isMobile ? '0.65rem' : '0.75rem',
+                            display: 'block',
+                            mb: 1.5,
+                            textAlign: 'center'
                         }}
                     >
-                        4.9
+                        {isMobile ? 'Connect' : 'Let\'s Connect'}
                     </Typography>
+
+                    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
+                        {githubUrl && (
+                            <Tooltip title="GitHub" placement="bottom">
+                                <IconButton
+                                    component="a"
+                                    href={githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        color: theme.palette.mode === 'dark' ? 'text.secondary' : 'text.primary',
+                                        backgroundColor: theme.palette.mode === 'dark'
+                                            ? `${theme.palette.primary.main}20`
+                                            : `${theme.palette.primary.main}25`,
+                                        border: theme.palette.mode === 'dark'
+                                            ? 'none'
+                                            : `1.5px solid ${theme.palette.primary.main}30`,
+                                        size: isMobile ? 'small' : 'medium',
+                                        '&:hover': {
+                                            backgroundColor: 'primary.main',
+                                            color: 'white',
+                                            transform: 'scale(1.15)',
+                                            boxShadow: theme.palette.mode === 'dark'
+                                                ? `0 4px 12px ${theme.palette.primary.main}50`
+                                                : `0 6px 16px ${theme.palette.primary.main}60`,
+                                        },
+                                        transition: 'all 0.3s ease',
+                                    }}
+                                >
+                                    <GitHub sx={{ fontSize: isMobile ? 16 : 20 }} />
+                                </IconButton>
+                            </Tooltip>
+                        )}
+
+                        {linkedinUrl && (
+                            <Tooltip title="LinkedIn" placement="bottom">
+                                <IconButton
+                                    component="a"
+                                    href={linkedinUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        color: theme.palette.mode === 'dark' ? 'text.secondary' : 'text.primary',
+                                        backgroundColor: theme.palette.mode === 'dark'
+                                            ? `${theme.palette.secondary.main}20`
+                                            : `${theme.palette.secondary.main}25`,
+                                        border: theme.palette.mode === 'dark'
+                                            ? 'none'
+                                            : `1.5px solid ${theme.palette.secondary.main}30`,
+                                        '&:hover': {
+                                            backgroundColor: 'secondary.main',
+                                            color: 'white',
+                                            transform: 'scale(1.15)',
+                                            boxShadow: theme.palette.mode === 'dark'
+                                                ? `0 4px 12px ${theme.palette.secondary.main}50`
+                                                : `0 6px 16px ${theme.palette.secondary.main}60`,
+                                        },
+                                        transition: 'all 0.3s ease',
+                                    }}
+                                >
+                                    <LinkedIn sx={{ fontSize: isMobile ? 16 : 20 }} />
+                                </IconButton>
+                            </Tooltip>
+                        )}
+                    </Box>
                 </CardContent>
             </Card>
 
@@ -201,10 +269,11 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
             <Box
                 sx={{
                     position: 'absolute',
-                    right: isMobile ? -20 : -50,
-                    bottom: 40,
+                    right: isMobile ? -35 : -70,
+                    bottom: isMobile ? 20 : 40,
                     textAlign: 'right',
                     zIndex: 2,
+                    minWidth: isMobile ? 100 : 150,
                 }}
             >
                 <Typography
@@ -212,7 +281,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         fontWeight: 300,
                         color: 'text.secondary',
-                        fontSize: isMobile ? '1.8rem' : '2.5rem',
+                        fontSize: isMobile ? '1.2rem' : '2.5rem',
                         fontStyle: 'italic',
                         lineHeight: 1,
                         opacity: 0.8,
@@ -225,9 +294,12 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         fontWeight: 700,
                         color: 'primary.main',
-                        fontSize: isMobile ? '1.8rem' : '2.5rem',
+                        fontSize: isMobile ? '1.2rem' : '2.5rem',
                         lineHeight: 1,
-                        textShadow: `1px 1px 2px ${theme.palette.primary.main}40`,
+                        textShadow: theme.palette.mode === 'dark'
+                            ? `1px 1px 2px ${theme.palette.primary.main}40`
+                            : `2px 2px 4px ${theme.palette.primary.main}50`,
+                        filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.2))',
                     }}
                 >
                     Developer.
@@ -235,32 +307,38 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
             </Box>
 
             {/* Decorative arrows */}
-            <ArrowUpward
-                sx={{
-                    position: 'absolute',
-                    top: 20,
-                    left: '30%',
-                    color: 'primary.main',
-                    opacity: 0.6,
-                    fontSize: 20,
-                    animation: 'bounce 2s ease-in-out infinite',
-                    '@keyframes bounce': {
-                        '0%, 100%': { transform: 'translateY(0px)' },
-                        '50%': { transform: 'translateY(-5px)' },
-                    },
-                }}
-            />
-            <ArrowDownward
-                sx={{
-                    position: 'absolute',
-                    bottom: 20,
-                    right: '30%',
-                    color: 'secondary.main',
-                    opacity: 0.6,
-                    fontSize: 20,
-                    animation: 'bounce 2s ease-in-out infinite 1s',
-                }}
-            />
+            {!isMobile && (
+                <>
+                    <ArrowUpward
+                        sx={{
+                            position: 'absolute',
+                            top: 20,
+                            left: '30%',
+                            color: 'primary.main',
+                            opacity: theme.palette.mode === 'dark' ? 0.6 : 0.8,
+                            fontSize: 20,
+                            filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.3))',
+                            animation: 'bounce 2s ease-in-out infinite',
+                            '@keyframes bounce': {
+                                '0%, 100%': { transform: 'translateY(0px)' },
+                                '50%': { transform: 'translateY(-5px)' },
+                            },
+                        }}
+                    />
+                    <ArrowDownward
+                        sx={{
+                            position: 'absolute',
+                            bottom: 20,
+                            right: '30%',
+                            color: 'secondary.main',
+                            opacity: theme.palette.mode === 'dark' ? 0.6 : 0.8,
+                            fontSize: 20,
+                            filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(231, 111, 81, 0.3))',
+                            animation: 'bounce 2s ease-in-out infinite 1s',
+                        }}
+                    />
+                </>
+            )}
         </Box>
     );
 };

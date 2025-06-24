@@ -133,9 +133,9 @@ const FooterSection: React.FC = () => {
                             }}
                         />{' '}
                         using Astro & Material UI                </Typography>
-            </Stack>
-        </Container>
-    </Box>
+                </Stack>
+            </Container>
+        </Box>
     );
 };
 
