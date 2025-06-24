@@ -1,7 +1,8 @@
 export interface Technology {
     name: string;
     iconColor: string;
-    iconType: 'react' | 'typescript' | 'mui' | 'jest' | 'nextjs' | 'nodejs' | 'csharp' | 'dotnet' | 'graphql' | 'postgresql' | 'aws' | 'sonarqube' | 'server' | 'database';
+    iconType: 'react' | 'typescript' | 'mui' | 'jest' | 'nextjs' | 'nodejs' | 'csharp' | 'dotnet' | 'graphql' | 'postgresql' | 'aws' | 'sonarqube' | 'server' | 'database' | 'vue' | 'php' | 'mysql' | 'mongodb' | 'zapier' | 'strapi' | 'webflow' | 'zendesk' | 'sequelize' | 'mssql' | 'typeorm' | 'adonis' | 'nestjs' | 'docker' | 'express' | 'prisma' | 'astro' | 'tailwind' | 'redux' | 'recoil' | 'webpack' | 'sass' | 'linux' | 'html' | 'css' | 'git' | 'swagger' | 'spa' | 'rest' | 'solid' | 'scrum' | 'microservices' | 'javascript';
+    featured?: boolean; // Mark the most important/frequently used skills
 }
 
 export interface TechnicalArea {
@@ -52,45 +53,87 @@ export const briefList: AudienceBrief[] = [
 
 export const technicalAreas: TechnicalArea[] = [
     {
-        category: 'Frontend Excellence',
+        category: 'Frontend Development',
         iconType: 'devices',
         technologies: [
-            { name: 'React', iconColor: '#61DAFB', iconType: 'react' },
-            { name: 'TypeScript', iconColor: '#3178C6', iconType: 'typescript' },
-            { name: 'Material UI', iconColor: '#007FFF', iconType: 'mui' },
-            { name: 'Recoil', iconColor: '#3578E5', iconType: 'react' },
-            { name: 'Jest', iconColor: '#C21325', iconType: 'jest' },
-            { name: 'Next.js', iconColor: '#000000', iconType: 'nextjs' },
+            { name: 'React', iconColor: '#61DAFB', iconType: 'react', featured: true },
+            { name: 'TypeScript', iconColor: '#3178C6', iconType: 'typescript', featured: true },
+            { name: 'JavaScript', iconColor: '#F7DF1E', iconType: 'javascript', featured: true },
+            { name: 'Material UI', iconColor: '#007FFF', iconType: 'mui', featured: true },
+            { name: 'Vue', iconColor: '#4FC08D', iconType: 'vue' },
+            { name: 'Astro.js', iconColor: '#FF5D01', iconType: 'astro' },
+            { name: 'Tailwind', iconColor: '#06B6D4', iconType: 'tailwind' },
+            { name: 'Redux', iconColor: '#764ABC', iconType: 'redux' },
+            { name: 'Recoil', iconColor: '#3578E5', iconType: 'recoil' },
+            { name: 'Webpack', iconColor: '#8DD6F9', iconType: 'webpack' },
+            { name: 'SASS', iconColor: '#CC6699', iconType: 'sass' },
+            { name: 'HTML', iconColor: '#E34F26', iconType: 'html' },
+            { name: 'CSS3', iconColor: '#1572B6', iconType: 'css' },
         ],
-        description: `Building responsive, accessible user experiences with modern frameworks and libraries`,
-        descriptionHighlight: 'I write JavaScript that works (after a few Stack Overflow dives)',
+        description: `Modern frontend frameworks, state management, and styling solutions`,
+        descriptionHighlight: 'I make pixels dance and users happy (mostly)',
     },
     {
-        category: 'Backend Architecture',
+        category: 'Backend & APIs',
         iconType: 'storage',
         technologies: [
-            { name: 'Node.js', iconColor: '#339933', iconType: 'nodejs' },
-            { name: 'C#', iconColor: '#239120', iconType: 'csharp' },
-            { name: '.NET', iconColor: '#512BD4', iconType: 'dotnet' },
-            { name: 'GraphQL', iconColor: '#E10098', iconType: 'graphql' },
-            { name: 'REST APIs', iconColor: '#FF6B6B', iconType: 'server' },
-            { name: 'Microservices', iconColor: '#4ECDC4', iconType: 'server' },
+            { name: 'Node.js', iconColor: '#339933', iconType: 'nodejs', featured: true },
+            { name: 'C#', iconColor: '#239120', iconType: 'csharp', featured: true },
+            { name: '.NET', iconColor: '#512BD4', iconType: 'dotnet', featured: true },
+            { name: 'GraphQL', iconColor: '#E10098', iconType: 'graphql', featured: true },
+            { name: 'Express', iconColor: '#000000', iconType: 'express' },
+            { name: 'NestJS', iconColor: '#E0234E', iconType: 'nestjs' },
+            { name: 'Adonis.js', iconColor: '#220052', iconType: 'adonis' },
+            { name: 'PHP', iconColor: '#777BB4', iconType: 'php' },
+            { name: 'REST', iconColor: '#FF6B6B', iconType: 'rest' },
+            { name: 'Microservices', iconColor: '#4ECDC4', iconType: 'microservices' },
         ],
-        description: 'Scalable server-side solutions and API design',
-        descriptionHighlight:'I turn APIs into magic—or at least functioning endpoints',
+        description: 'Server-side development, API design, and scalable architecture',
+        descriptionHighlight:'I turn coffee into APIs (with occasional Stack Overflow breaks)',
     },
     {
-        category: 'Database & Cloud',
+        category: 'Databases & ORM',
+        iconType: 'storage',
+        technologies: [
+            { name: 'PostgreSQL', iconColor: '#336791', iconType: 'postgresql', featured: true },
+            { name: 'MySQL', iconColor: '#4479A1', iconType: 'mysql', featured: true },
+            { name: 'TypeORM', iconColor: '#FE0803', iconType: 'typeorm', featured: true },
+            { name: 'MongoDB', iconColor: '#47A248', iconType: 'mongodb' },
+            { name: 'SQL Server', iconColor: '#CC2927', iconType: 'mssql' },
+            { name: 'Sequelize.js', iconColor: '#52B0E7', iconType: 'sequelize' },
+            { name: 'Prisma', iconColor: '#2D3748', iconType: 'prisma' },
+        ],
+        description: 'Database design, optimization, and ORM implementation',
+        descriptionHighlight:'I speak fluent SQL (and sometimes the database listens)' ,
+    },
+    {
+        category: 'DevOps & Tools',
         iconType: 'cloud',
         technologies: [
-            { name: 'PostgreSQL', iconColor: '#336791', iconType: 'postgresql' },
-            { name: 'AWS', iconColor: '#FF9900', iconType: 'aws' },
-            { name: 'Database Design', iconColor: '#4285F4', iconType: 'database' },
+            { name: 'AWS', iconColor: '#FF9900', iconType: 'aws', featured: true },
+            { name: 'Docker', iconColor: '#2496ED', iconType: 'docker', featured: true },
+            { name: 'Jest', iconColor: '#C21325', iconType: 'jest', featured: true },
+            { name: 'Linux', iconColor: '#FCC624', iconType: 'linux' },
+            { name: 'GitHub/GitLab', iconColor: '#181717', iconType: 'git' },
             { name: 'SonarQube', iconColor: '#4E9BCD', iconType: 'sonarqube' },
-            { name: 'CI/CD', iconColor: '#2196F3', iconType: 'server' },
+            { name: 'Swagger', iconColor: '#85EA2D', iconType: 'swagger' },
         ],
-        description: 'Data architecture and cloud infrastructure management',
-        descriptionHighlight:'I send code to production and pray nothing breaks.' ,
+        description: 'Containerization, cloud infrastructure, and development tools',
+        descriptionHighlight:'I containerize everything and deploy with confidence (fingers crossed)' ,
+    },
+    {
+        category: 'Integration & Platforms',
+        iconType: 'devices',
+        technologies: [
+            { name: 'Zapier', iconColor: '#FF4A00', iconType: 'zapier', featured: true },
+            { name: 'SCRUM', iconColor: '#0052CC', iconType: 'scrum', featured: true },
+            { name: 'Strapi', iconColor: '#2F2E8B', iconType: 'strapi' },
+            { name: 'Webflow', iconColor: '#4353FF', iconType: 'webflow' },
+            { name: 'SPAs', iconColor: '#FF6B6B', iconType: 'spa' },
+            { name: 'SOLID', iconColor: '#4285F4', iconType: 'solid' },
+        ],
+        description: 'Third-party integrations, design principles, and agile methodologies',
+        descriptionHighlight:'I connect everything to everything (and it somehow works)' ,
     },
 ];
 

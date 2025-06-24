@@ -17,7 +17,7 @@ const TechnicalExpertiseSection: React.FC = () => {
 
     return (
         <Grid size={{ xs: 12 }}>
-            <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Code
                     sx={{
                         color: 'primary.main',
@@ -53,7 +53,7 @@ const TechnicalExpertiseSection: React.FC = () => {
                 </Typography>
                 <TrendingUp sx={{ color: 'secondary.main', fontSize: 20, ml: 1 }} />
             </Box>
-            <Stack spacing={3}>
+            <Stack spacing={2}>
                 {technicalAreas.map((area, index) => (
                     <TechnicalExpertiseCard key={index} area={area} />
                 ))}
