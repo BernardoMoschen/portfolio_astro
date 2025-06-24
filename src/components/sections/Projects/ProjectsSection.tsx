@@ -130,20 +130,79 @@ const ProjectsSection: React.FC = () => {
             component="section"
             id="projects"
             sx={{
-                py: 8,
-                backgroundColor: 'background.paper',
+                py: { xs: 8, md: 12 },
+                background: theme.palette.mode === 'dark'
+                    ? `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}12 25%, ${theme.palette.secondary.dark}18 75%, ${theme.palette.background.paper} 100%)`
+                    : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}08 25%, ${theme.palette.secondary.light}12 75%, ${theme.palette.background.paper} 100%)`,
                 position: 'relative',
+                overflow: 'hidden',
             }}
         >
-            <Container maxWidth="lg">
+            {/* Background decorative elements */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: '20%',
+                    right: '-10%',
+                    width: 300,
+                    height: 300,
+                    borderRadius: '50%',
+                    background: theme.palette.mode === 'dark'
+                        ? `radial-gradient(circle, ${theme.palette.primary.dark}15 0%, transparent 70%)`
+                        : `radial-gradient(circle, ${theme.palette.primary.light}10 0%, transparent 70%)`,
+                    filter: 'blur(40px)',
+                    animation: 'float 6s ease-in-out infinite',
+                }}
+            />
+            <Box
+                sx={{
+                    position: 'absolute',
+                    bottom: '10%',
+                    left: '-5%',
+                    width: 250,
+                    height: 250,
+                    borderRadius: '50%',
+                    background: theme.palette.mode === 'dark'
+                        ? `radial-gradient(circle, ${theme.palette.secondary.dark}15 0%, transparent 70%)`
+                        : `radial-gradient(circle, ${theme.palette.secondary.light}10 0%, transparent 70%)`,
+                    filter: 'blur(40px)',
+                    animation: 'float 8s ease-in-out infinite reverse',
+                }}
+            />
+
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+                {/* Section badge */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Chip
+                        icon={<Code />}
+                        label="FEATURED WORK"
+                        sx={{
+                            backgroundColor: theme.palette.mode === 'dark'
+                                ? theme.palette.primary.dark + '40'
+                                : theme.palette.primary.light + '20',
+                            color: theme.palette.primary.main,
+                            fontWeight: 600,
+                            letterSpacing: '0.5px',
+                            border: `1px solid ${theme.palette.primary.main}40`,
+                        }}
+                    />
+                </Box>
+
                 <Typography
                     variant="h2"
                     component="h2"
                     sx={{
                         textAlign: 'center',
                         mb: 2,
-                        fontSize: isMobile ? '2rem' : '2.5rem',
-                        fontWeight: 600,
+                        fontSize: isMobile ? '2.5rem' : '3.5rem',
+                        fontWeight: 700,
+                        background: theme.palette.mode === 'dark'
+                            ? `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)`
+                            : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: theme.palette.mode === 'dark' ? 'none' : '0 2px 4px rgba(0,0,0,0.1)',
                     }}
                 >
                     Featured Projects
@@ -153,11 +212,13 @@ const ProjectsSection: React.FC = () => {
                     variant="body1"
                     sx={{
                         textAlign: 'center',
-                        mb: 6,
-                        color: 'text.secondary',
-                        fontSize: '1.1rem',
-                        maxWidth: 600,
+                        mb: 8,
+                        color: theme.palette.text.secondary,
+                        fontSize: '1.2rem',
+                        maxWidth: 700,
                         mx: 'auto',
+                        lineHeight: 1.6,
+                        fontWeight: 400,
                     }}
                 >
                     Here are some of my recent projects that showcase my skills and experience
@@ -165,7 +226,7 @@ const ProjectsSection: React.FC = () => {
                 </Typography>
 
                 {/* Featured Projects */}
-                <Grid container spacing={4} sx={{ mb: 8 }}>
+                <Grid container spacing={4} sx={{ mb: 10 }}>
                     {featuredProjects.map((project, index) => (
                         <Grid size={{ xs: 12, md: 6 }} key={index}>
                             <Card
@@ -173,13 +234,26 @@ const ProjectsSection: React.FC = () => {
                                     height: '100%',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    background: 'linear-gradient(135deg, rgba(63, 81, 181, 0.1) 0%, rgba(245, 0, 87, 0.05) 100%)',
-                                    backdropFilter: 'blur(10px)',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                    background: theme.palette.mode === 'dark'
+                                        ? `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}15 50%, ${theme.palette.secondary.dark}10 100%)`
+                                        : `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}08 50%, ${theme.palette.secondary.light}05 100%)`,
+                                    backdropFilter: 'blur(20px)',
+                                    border: theme.palette.mode === 'dark'
+                                        ? `1px solid ${theme.palette.primary.main}30`
+                                        : `1px solid ${theme.palette.primary.main}20`,
+                                    borderRadius: 3,
+                                    boxShadow: theme.palette.mode === 'dark'
+                                        ? `0 8px 32px ${theme.palette.primary.dark}25`
+                                        : `0 8px 32px ${theme.palette.primary.main}15`,
+                                    transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
                                     '&:hover': {
-                                        transform: 'translateY(-10px)',
-                                        boxShadow: '0 20px 40px rgba(63, 81, 181, 0.2)',
+                                        transform: 'translateY(-8px)',
+                                        boxShadow: theme.palette.mode === 'dark'
+                                            ? `0 20px 40px ${theme.palette.primary.dark}35`
+                                            : `0 20px 40px ${theme.palette.primary.main}25`,
+                                        borderColor: theme.palette.mode === 'dark'
+                                            ? theme.palette.primary.main + '50'
+                                            : theme.palette.primary.main + '40',
                                     },
                                 }}
                             >
@@ -187,26 +261,58 @@ const ProjectsSection: React.FC = () => {
                                     <CardMedia
                                         component="div"
                                         sx={{
-                                            height: 200,
-                                            backgroundColor: 'rgba(63, 81, 181, 0.1)',
+                                            height: 220,
+                                            background: theme.palette.mode === 'dark'
+                                                ? `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.dark}20 100%)`
+                                                : `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.light}15 100%)`,
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                                            border: theme.palette.mode === 'dark'
+                                                ? `1px solid ${theme.palette.primary.main}20`
+                                                : `1px solid ${theme.palette.primary.main}15`,
+                                            borderTopLeftRadius: 12,
+                                            borderTopRightRadius: 12,
+                                            position: 'relative',
+                                            overflow: 'hidden',
                                         }}
                                     >
-                                        <Code sx={{ fontSize: 60, color: 'primary.main', opacity: 0.7 }} />
+                                        {/* Animated background pattern */}
+                                        <Box
+                                            sx={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                                background: theme.palette.mode === 'dark'
+                                                    ? `radial-gradient(circle at 30% 20%, ${theme.palette.primary.dark}30 0%, transparent 50%), radial-gradient(circle at 70% 80%, ${theme.palette.secondary.dark}25 0%, transparent 50%)`
+                                                    : `radial-gradient(circle at 30% 20%, ${theme.palette.primary.light}20 0%, transparent 50%), radial-gradient(circle at 70% 80%, ${theme.palette.secondary.light}15 0%, transparent 50%)`,
+                                                animation: 'pulse 4s ease-in-out infinite',
+                                            }}
+                                        />
+                                        <Code
+                                            sx={{
+                                                fontSize: 60,
+                                                color: theme.palette.primary.main,
+                                                opacity: 0.8,
+                                                zIndex: 1,
+                                                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+                                            }}
+                                        />
                                     </CardMedia>
-                                    
+
                                     {/* Status and Featured Chips */}
-                                    <Box sx={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 1, flexDirection: 'column' }}>
+                                    <Box sx={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 1, flexDirection: 'column' }}>
                                         <Chip
                                             icon={<Star />}
                                             label="Featured"
                                             size="small"
                                             sx={{
-                                                backgroundColor: 'secondary.main',
-                                                color: 'white',
+                                                backgroundColor: theme.palette.secondary.main,
+                                                color: theme.palette.secondary.contrastText,
+                                                fontWeight: 600,
+                                                boxShadow: `0 2px 8px ${theme.palette.secondary.main}40`,
                                             }}
                                         />
                                         <Chip
@@ -215,18 +321,23 @@ const ProjectsSection: React.FC = () => {
                                             size="small"
                                             color={getStatusInfo(project.status).color}
                                             variant="filled"
+                                            sx={{
+                                                fontWeight: 600,
+                                                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                            }}
                                         />
                                     </Box>
                                 </Box>
 
-                                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                                <CardContent sx={{ flexGrow: 1, p: 4 }}>
                                     <Typography
                                         variant="h5"
                                         component="h3"
                                         sx={{
-                                            fontWeight: 600,
+                                            fontWeight: 700,
                                             mb: 2,
-                                            color: 'primary.main',
+                                            color: theme.palette.primary.main,
+                                            fontSize: '1.4rem',
                                         }}
                                     >
                                         {project.title}
@@ -236,8 +347,9 @@ const ProjectsSection: React.FC = () => {
                                         variant="body2"
                                         sx={{
                                             mb: 3,
-                                            lineHeight: 1.6,
-                                            color: 'text.secondary',
+                                            lineHeight: 1.7,
+                                            color: theme.palette.text.secondary,
+                                            fontSize: '1rem',
                                         }}
                                     >
                                         {project.description}
@@ -251,45 +363,70 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: 'primary.main',
-                                                    color: 'primary.light',
-                                                    fontSize: '0.75rem',
+                                                    borderColor: theme.palette.primary.main + '60',
+                                                    color: theme.palette.primary.main,
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: 500,
+                                                    backgroundColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.primary.dark + '20'
+                                                        : theme.palette.primary.light + '15',
+                                                    '&:hover': {
+                                                        borderColor: theme.palette.primary.main,
+                                                        backgroundColor: theme.palette.mode === 'dark'
+                                                            ? theme.palette.primary.dark + '30'
+                                                            : theme.palette.primary.light + '25',
+                                                    },
                                                 }}
                                             />
                                         ))}
                                     </Stack>
                                 </CardContent>
 
-                                <CardActions sx={{ p: 3, pt: 0 }}>
+                                <CardActions sx={{ p: 4, pt: 0, gap: 1 }}>
                                     {project.githubUrl ? (
                                         <Button
-                                            size="small"
+                                            size="medium"
                                             startIcon={<GitHub />}
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: 'text.secondary' }}
+                                            variant="outlined"
+                                            sx={{
+                                                color: theme.palette.text.secondary,
+                                                borderColor: theme.palette.text.secondary + '60',
+                                                '&:hover': {
+                                                    borderColor: theme.palette.text.secondary,
+                                                    backgroundColor: theme.palette.text.secondary + '10',
+                                                },
+                                            }}
                                         >
                                             Code
                                         </Button>
                                     ) : (
                                         <Button
-                                            size="small"
+                                            size="medium"
                                             startIcon={getStatusInfo(project.status).icon}
                                             disabled
-                                            sx={{ color: 'text.disabled' }}
+                                            sx={{ color: theme.palette.text.disabled }}
                                         >
                                             {project.status === 'wip' ? 'In Development' : 'Coming Soon'}
                                         </Button>
                                     )}
                                     {project.liveUrl && (
                                         <Button
-                                            size="small"
+                                            size="medium"
                                             startIcon={<Launch />}
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            sx={{ color: 'primary.main' }}
+                                            variant="contained"
+                                            sx={{
+                                                backgroundColor: theme.palette.primary.main,
+                                                color: theme.palette.primary.contrastText,
+                                                '&:hover': {
+                                                    backgroundColor: theme.palette.primary.dark,
+                                                },
+                                            }}
                                         >
                                             Live Demo
                                         </Button>
@@ -301,18 +438,31 @@ const ProjectsSection: React.FC = () => {
                 </Grid>
 
                 {/* Other Projects */}
-                <Typography
-                    variant="h3"
-                    component="h3"
-                    sx={{
-                        textAlign: 'center',
-                        mb: 4,
-                        fontSize: isMobile ? '1.8rem' : '2rem',
-                        fontWeight: 600,
-                    }}
-                >
-                    Other Projects
-                </Typography>
+                <Box sx={{ textAlign: 'center', mb: 6 }}>
+                    <Typography
+                        variant="h3"
+                        component="h3"
+                        sx={{
+                            fontSize: isMobile ? '2rem' : '2.5rem',
+                            fontWeight: 600,
+                            color: theme.palette.text.primary,
+                            mb: 2,
+                        }}
+                    >
+                        Other Projects
+                    </Typography>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: theme.palette.text.secondary,
+                            fontSize: '1.1rem',
+                            maxWidth: 600,
+                            mx: 'auto',
+                        }}
+                    >
+                        Additional projects and experiments showcasing various technologies and concepts.
+                    </Typography>
+                </Box>
 
                 <Grid container spacing={3}>
                     {otherProjects.map((project, index) => (
@@ -322,12 +472,22 @@ const ProjectsSection: React.FC = () => {
                                     height: '100%',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    backgroundColor: 'background.default',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                    background: theme.palette.mode === 'dark'
+                                        ? `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}08 100%)`
+                                        : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}05 100%)`,
+                                    border: theme.palette.mode === 'dark'
+                                        ? `1px solid ${theme.palette.primary.main}20`
+                                        : `1px solid ${theme.palette.primary.main}15`,
+                                    borderRadius: 2,
+                                    transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
                                     '&:hover': {
-                                        transform: 'translateY(-5px)',
-                                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+                                        transform: 'translateY(-4px)',
+                                        boxShadow: theme.palette.mode === 'dark'
+                                            ? `0 12px 24px ${theme.palette.primary.dark}30`
+                                            : `0 12px 24px ${theme.palette.primary.main}20`,
+                                        borderColor: theme.palette.mode === 'dark'
+                                            ? theme.palette.primary.main + '40'
+                                            : theme.palette.primary.main + '30',
                                     },
                                 }}
                             >
@@ -339,7 +499,7 @@ const ProjectsSection: React.FC = () => {
                                                 component="h4"
                                                 sx={{
                                                     fontWeight: 600,
-                                                    color: 'primary.main',
+                                                    color: theme.palette.primary.main,
                                                 }}
                                             >
                                                 {project.title}
@@ -350,6 +510,7 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 color={getStatusInfo(project.status).color}
                                                 variant="outlined"
+                                                sx={{ fontSize: '0.75rem' }}
                                             />
                                         </Box>
                                         <Box>
@@ -359,7 +520,12 @@ const ProjectsSection: React.FC = () => {
                                                     href={project.githubUrl}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    sx={{ color: 'text.secondary' }}
+                                                    sx={{
+                                                        color: theme.palette.text.secondary,
+                                                        '&:hover': {
+                                                            color: theme.palette.primary.main,
+                                                        },
+                                                    }}
                                                 >
                                                     <GitHub fontSize="small" />
                                                 </IconButton>
@@ -367,7 +533,7 @@ const ProjectsSection: React.FC = () => {
                                                 <IconButton
                                                     size="small"
                                                     disabled
-                                                    sx={{ color: 'text.disabled' }}
+                                                    sx={{ color: theme.palette.text.disabled }}
                                                 >
                                                     <GitHub fontSize="small" />
                                                 </IconButton>
@@ -378,7 +544,12 @@ const ProjectsSection: React.FC = () => {
                                                     href={project.liveUrl}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    sx={{ color: 'primary.main' }}
+                                                    sx={{
+                                                        color: theme.palette.primary.main,
+                                                        '&:hover': {
+                                                            color: theme.palette.primary.dark,
+                                                        },
+                                                    }}
                                                 >
                                                     <Launch fontSize="small" />
                                                 </IconButton>
@@ -391,7 +562,7 @@ const ProjectsSection: React.FC = () => {
                                         sx={{
                                             mb: 3,
                                             lineHeight: 1.6,
-                                            color: 'text.secondary',
+                                            color: theme.palette.text.secondary,
                                         }}
                                     >
                                         {project.description}
@@ -405,9 +576,14 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                                                    color: 'text.secondary',
+                                                    borderColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.primary.main + '40'
+                                                        : theme.palette.primary.main + '30',
+                                                    color: theme.palette.text.secondary,
                                                     fontSize: '0.7rem',
+                                                    backgroundColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.primary.dark + '10'
+                                                        : theme.palette.primary.light + '08',
                                                 }}
                                             />
                                         ))}
@@ -417,9 +593,14 @@ const ProjectsSection: React.FC = () => {
                                                 size="small"
                                                 variant="outlined"
                                                 sx={{
-                                                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                                                    color: 'text.secondary',
+                                                    borderColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.secondary.main + '40'
+                                                        : theme.palette.secondary.main + '30',
+                                                    color: theme.palette.secondary.main,
                                                     fontSize: '0.7rem',
+                                                    backgroundColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.secondary.dark + '10'
+                                                        : theme.palette.secondary.light + '08',
                                                 }}
                                             />
                                         )}
@@ -431,12 +612,13 @@ const ProjectsSection: React.FC = () => {
                 </Grid>
 
                 {/* GitHub CTA */}
-                <Box sx={{ textAlign: 'center', mt: 6 }}>
+                <Box sx={{ textAlign: 'center', mt: 8 }}>
                     <Typography
                         variant="body1"
                         sx={{
                             mb: 3,
-                            color: 'text.secondary',
+                            color: theme.palette.text.secondary,
+                            fontSize: '1.1rem',
                         }}
                     >
                         Want to see more? Check out my GitHub for additional projects and contributions.
@@ -449,11 +631,18 @@ const ProjectsSection: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{
-                            borderColor: 'primary.main',
-                            color: 'primary.main',
+                            borderColor: theme.palette.primary.main,
+                            color: theme.palette.primary.main,
+                            fontWeight: 600,
+                            px: 4,
+                            py: 1.5,
+                            borderRadius: 2,
                             '&:hover': {
-                                borderColor: 'primary.light',
-                                backgroundColor: 'rgba(63, 81, 181, 0.1)',
+                                borderColor: theme.palette.primary.dark,
+                                backgroundColor: theme.palette.mode === 'dark'
+                                    ? theme.palette.primary.dark + '15'
+                                    : theme.palette.primary.light + '10',
+                                transform: 'translateY(-2px)',
                             },
                         }}
                     >

@@ -12,6 +12,7 @@ import {
     IconButton,
     Snackbar,
     Alert,
+    Chip,
     useTheme,
     useMediaQuery,
 } from '@mui/material';
@@ -127,20 +128,79 @@ const ContactSection: React.FC = () => {
             component="section"
             id="contact"
             sx={{
-                py: 8,
-                backgroundColor: 'background.default',
+                py: { xs: 8, md: 12 },
+                background: theme.palette.mode === 'dark'
+                    ? `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.dark}10 30%, ${theme.palette.secondary.dark}15 70%, ${theme.palette.background.default} 100%)`
+                    : `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.light}06 30%, ${theme.palette.secondary.light}10 70%, ${theme.palette.background.default} 100%)`,
                 position: 'relative',
+                overflow: 'hidden',
             }}
         >
-            <Container maxWidth="lg">
+            {/* Background decorative elements */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: '10%',
+                    left: '-5%',
+                    width: 350,
+                    height: 350,
+                    borderRadius: '50%',
+                    background: theme.palette.mode === 'dark'
+                        ? `radial-gradient(circle, ${theme.palette.primary.dark}12 0%, transparent 70%)`
+                        : `radial-gradient(circle, ${theme.palette.primary.light}08 0%, transparent 70%)`,
+                    filter: 'blur(40px)',
+                    animation: 'float 8s ease-in-out infinite',
+                }}
+            />
+            <Box
+                sx={{
+                    position: 'absolute',
+                    bottom: '20%',
+                    right: '-8%',
+                    width: 280,
+                    height: 280,
+                    borderRadius: '50%',
+                    background: theme.palette.mode === 'dark'
+                        ? `radial-gradient(circle, ${theme.palette.secondary.dark}12 0%, transparent 70%)`
+                        : `radial-gradient(circle, ${theme.palette.secondary.light}08 0%, transparent 70%)`,
+                    filter: 'blur(40px)',
+                    animation: 'float 6s ease-in-out infinite reverse',
+                }}
+            />
+
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+                {/* Section badge */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+                    <Chip
+                        icon={<Email />}
+                        label="LET'S CONNECT"
+                        sx={{
+                            backgroundColor: theme.palette.mode === 'dark'
+                                ? theme.palette.primary.dark + '40'
+                                : theme.palette.primary.light + '20',
+                            color: theme.palette.primary.main,
+                            fontWeight: 600,
+                            letterSpacing: '0.5px',
+                            border: `1px solid ${theme.palette.primary.main}40`,
+                        }}
+                    />
+                </Box>
+
                 <Typography
                     variant="h2"
                     component="h2"
                     sx={{
                         textAlign: 'center',
                         mb: 2,
-                        fontSize: isMobile ? '2rem' : '2.5rem',
-                        fontWeight: 600,
+                        fontSize: isMobile ? '2.5rem' : '3.5rem',
+                        fontWeight: 700,
+                        background: theme.palette.mode === 'dark'
+                            ? `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.secondary.light} 100%)`
+                            : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: theme.palette.mode === 'dark' ? 'none' : '0 2px 4px rgba(0,0,0,0.1)',
                     }}
                 >
                     Get In Touch
@@ -150,11 +210,13 @@ const ContactSection: React.FC = () => {
                     variant="body1"
                     sx={{
                         textAlign: 'center',
-                        mb: 6,
-                        color: 'text.secondary',
-                        fontSize: '1.1rem',
-                        maxWidth: 600,
+                        mb: 8,
+                        color: theme.palette.text.secondary,
+                        fontSize: '1.2rem',
+                        maxWidth: 700,
                         mx: 'auto',
+                        lineHeight: 1.6,
+                        fontWeight: 400,
                     }}
                 >
                     I'm always interested in new opportunities and exciting projects.
@@ -166,9 +228,17 @@ const ContactSection: React.FC = () => {
                     <Grid size={{ xs: 12, md: 8 }}>
                         <Card
                             sx={{
-                                background: 'linear-gradient(135deg, rgba(63, 81, 181, 0.1) 0%, rgba(245, 0, 87, 0.05) 100%)',
-                                backdropFilter: 'blur(10px)',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                background: theme.palette.mode === 'dark'
+                                    ? `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}12 50%, ${theme.palette.secondary.dark}08 100%)`
+                                    : `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}06 50%, ${theme.palette.secondary.light}04 100%)`,
+                                backdropFilter: 'blur(20px)',
+                                border: theme.palette.mode === 'dark'
+                                    ? `1px solid ${theme.palette.primary.main}25`
+                                    : `1px solid ${theme.palette.primary.main}15`,
+                                borderRadius: 3,
+                                boxShadow: theme.palette.mode === 'dark'
+                                    ? `0 8px 32px ${theme.palette.primary.dark}20`
+                                    : `0 8px 32px ${theme.palette.primary.main}10`,
                             }}
                         >
                             <CardContent sx={{ p: 4 }}>
@@ -176,9 +246,9 @@ const ContactSection: React.FC = () => {
                                     variant="h4"
                                     sx={{
                                         mb: 3,
-                                        fontSize: isMobile ? '1.5rem' : '2rem',
+                                        fontSize: isMobile ? '1.8rem' : '2.2rem',
                                         fontWeight: 600,
-                                        color: 'primary.main',
+                                        color: theme.palette.primary.main,
                                     }}
                                 >
                                     Send me a message
@@ -198,20 +268,22 @@ const ContactSection: React.FC = () => {
                                                 sx={{
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': {
-                                                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                                                            borderColor: theme.palette.mode === 'dark'
+                                                                ? theme.palette.primary.main + '40'
+                                                                : theme.palette.primary.main + '30',
                                                         },
                                                         '&:hover fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                         '&.Mui-focused fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                     },
                                                     '& .MuiInputLabel-root': {
-                                                        color: 'text.secondary',
+                                                        color: theme.palette.text.secondary,
                                                     },
                                                     '& .MuiInputBase-input': {
-                                                        color: 'text.primary',
+                                                        color: theme.palette.text.primary,
                                                     },
                                                 }}
                                             />
@@ -230,20 +302,22 @@ const ContactSection: React.FC = () => {
                                                 sx={{
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': {
-                                                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                                                            borderColor: theme.palette.mode === 'dark'
+                                                                ? theme.palette.primary.main + '40'
+                                                                : theme.palette.primary.main + '30',
                                                         },
                                                         '&:hover fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                         '&.Mui-focused fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                     },
                                                     '& .MuiInputLabel-root': {
-                                                        color: 'text.secondary',
+                                                        color: theme.palette.text.secondary,
                                                     },
                                                     '& .MuiInputBase-input': {
-                                                        color: 'text.primary',
+                                                        color: theme.palette.text.primary,
                                                     },
                                                 }}
                                             />
@@ -261,20 +335,22 @@ const ContactSection: React.FC = () => {
                                                 sx={{
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': {
-                                                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                                                            borderColor: theme.palette.mode === 'dark'
+                                                                ? theme.palette.primary.main + '40'
+                                                                : theme.palette.primary.main + '30',
                                                         },
                                                         '&:hover fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                         '&.Mui-focused fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                     },
                                                     '& .MuiInputLabel-root': {
-                                                        color: 'text.secondary',
+                                                        color: theme.palette.text.secondary,
                                                     },
                                                     '& .MuiInputBase-input': {
-                                                        color: 'text.primary',
+                                                        color: theme.palette.text.primary,
                                                     },
                                                 }}
                                             />
@@ -294,39 +370,49 @@ const ContactSection: React.FC = () => {
                                                 sx={{
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': {
-                                                            borderColor: 'rgba(255, 255, 255, 0.3)',
+                                                            borderColor: theme.palette.mode === 'dark'
+                                                                ? theme.palette.primary.main + '40'
+                                                                : theme.palette.primary.main + '30',
                                                         },
                                                         '&:hover fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                         '&.Mui-focused fieldset': {
-                                                            borderColor: 'primary.main',
+                                                            borderColor: theme.palette.primary.main,
                                                         },
                                                     },
                                                     '& .MuiInputLabel-root': {
-                                                        color: 'text.secondary',
+                                                        color: theme.palette.text.secondary,
                                                     },
                                                     '& .MuiInputBase-input': {
-                                                        color: 'text.primary',
+                                                        color: theme.palette.text.primary,
                                                     },
                                                 }}
                                             />
                                         </Grid>
 
-                                        <Grid size={{ xs: 12 }} >
+                                        <Grid size={{ xs: 12 }}>
                                             <Button
                                                 type="submit"
                                                 variant="contained"
                                                 size="large"
-                                                startIcon={<Send />}
                                                 disabled={loading}
+                                                startIcon={<Send />}
                                                 sx={{
-                                                    background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.secondary.main} 90%)`,
-                                                    '&:hover': {
-                                                        background: `linear-gradient(45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.secondary.dark} 90%)`,
-                                                    },
-                                                    px: 4,
+                                                    backgroundColor: theme.palette.primary.main,
+                                                    color: theme.palette.primary.contrastText,
+                                                    fontWeight: 600,
                                                     py: 1.5,
+                                                    px: 4,
+                                                    borderRadius: 2,
+                                                    '&:hover': {
+                                                        backgroundColor: theme.palette.primary.dark,
+                                                        transform: 'translateY(-2px)',
+                                                    },
+                                                    '&:disabled': {
+                                                        backgroundColor: theme.palette.action.disabledBackground,
+                                                        color: theme.palette.action.disabled,
+                                                    },
                                                 }}
                                             >
                                                 {loading ? 'Sending...' : 'Send Message'}
@@ -344,8 +430,13 @@ const ContactSection: React.FC = () => {
                             {/* Contact Information */}
                             <Card
                                 sx={{
-                                    backgroundColor: 'background.paper',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    background: theme.palette.mode === 'dark'
+                                        ? `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.dark}08 100%)`
+                                        : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.primary.light}05 100%)`,
+                                    border: theme.palette.mode === 'dark'
+                                        ? `1px solid ${theme.palette.primary.main}20`
+                                        : `1px solid ${theme.palette.primary.main}15`,
+                                    borderRadius: 2,
                                 }}
                             >
                                 <CardContent sx={{ p: 3 }}>
@@ -414,8 +505,13 @@ const ContactSection: React.FC = () => {
                             {/* Social Links */}
                             <Card
                                 sx={{
-                                    backgroundColor: 'background.paper',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    background: theme.palette.mode === 'dark'
+                                        ? `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.secondary.dark}08 100%)`
+                                        : `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.secondary.light}05 100%)`,
+                                    border: theme.palette.mode === 'dark'
+                                        ? `1px solid ${theme.palette.secondary.main}20`
+                                        : `1px solid ${theme.palette.secondary.main}15`,
+                                    borderRadius: 2,
                                 }}
                             >
                                 <CardContent sx={{ p: 3 }}>
@@ -424,13 +520,13 @@ const ContactSection: React.FC = () => {
                                         sx={{
                                             mb: 3,
                                             fontWeight: 600,
-                                            color: 'primary.main',
+                                            color: theme.palette.secondary.main,
                                         }}
                                     >
-                                        Follow Me
+                                        Let's Connect
                                     </Typography>
 
-                                    <Stack direction="row" spacing={1}>
+                                    <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
                                         {socialLinks.map((social, index) => (
                                             <IconButton
                                                 key={index}
@@ -438,13 +534,19 @@ const ContactSection: React.FC = () => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 sx={{
-                                                    backgroundColor: 'rgba(63, 81, 181, 0.1)',
-                                                    color: 'primary.main',
+                                                    width: 50,
+                                                    height: 50,
+                                                    backgroundColor: theme.palette.mode === 'dark'
+                                                        ? theme.palette.secondary.dark + '20'
+                                                        : theme.palette.secondary.light + '20',
+                                                    color: theme.palette.secondary.main,
+                                                    border: `1px solid ${theme.palette.secondary.main}40`,
                                                     '&:hover': {
-                                                        backgroundColor: 'primary.main',
-                                                        color: 'white',
+                                                        backgroundColor: theme.palette.secondary.main,
+                                                        color: theme.palette.secondary.contrastText,
+                                                        transform: 'translateY(-2px)',
+                                                        boxShadow: `0 4px 12px ${theme.palette.secondary.main}40`,
                                                     },
-                                                    transition: 'all 0.3s ease',
                                                 }}
                                             >
                                                 {social.icon}
