@@ -12,7 +12,18 @@ export const menuItems: MenuItem[] = [
 
 export const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.replace('#', ''));
-    element?.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+        const navbarHeight = window.innerWidth < 900 ? 64 : 72; // Match Toolbar heights
+        const additionalOffset = 24; // Extra breathing room
+        const totalOffset = navbarHeight + additionalOffset;
+        
+        const elementPosition = element.offsetTop - totalOffset;
+        
+        window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+    }
 };
 
 export const scrollToTop = () => {

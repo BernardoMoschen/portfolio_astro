@@ -35,6 +35,10 @@ const HeroSection: React.FC = () => {
                     : `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.light}10 50%, ${theme.palette.secondary.light}20 100%)`,
                 position: 'relative',
                 overflow: 'hidden',
+                // Add padding top to account for fixed navbar + breathing room
+                // Mobile: 64px navbar + 32px spacing = 96px (12 * 8px)
+                // Desktop: 72px navbar + 24px spacing = 96px (12 * 8px)  
+                pt: { xs: 12, sm: 12 },
                 // Add padding bottom on mobile to prevent content cutoff
                 pb: isMobile ? 8 : 0,
             }}
@@ -46,11 +50,10 @@ const HeroSection: React.FC = () => {
                         display: 'flex',
                         flexDirection: isMobile ? 'column' : 'row',
                         alignItems: 'center',
-                        gap: isMobile ? 4 : 8,
+                        gap: isMobile ? 4 : 16,
                         textAlign: isMobile ? 'center' : 'left',
                         minHeight: isMobile ? 'auto' : '80vh',
                         width: '100%',
-                        // Ensure content doesn't get too close to edges on mobile
                         px: isMobile ? 2 : 0,
                     }}
                 >
@@ -71,12 +74,10 @@ const HeroSection: React.FC = () => {
                             linkedinUrl={PERSONAL_INFO.social.linkedin}
                         />
                     </Box>
-
                     <Box
                         sx={{
                             flex: 1,
                             maxWidth: isMobile ? '100%' : 600,
-                            // Add margin to account for floating elements
                             ml: isMobile ? 0 : 2,
                             mr: isMobile ? 0 : 4,
                         }}
@@ -93,7 +94,6 @@ const HeroSection: React.FC = () => {
                         />
                     </Box>
                 </Box>
-
                 <ScrollIndicator onScrollClick={() => scrollToSection('about')} />
             </Container>
         </Box>
