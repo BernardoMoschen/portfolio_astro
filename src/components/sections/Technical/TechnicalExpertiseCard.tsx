@@ -19,17 +19,6 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
     const [isDescriptionHovered, setIsDescriptionHovered] = useState(false);
     const theme = useTheme();
 
-    const getHighlightColor = (highlight: string) => {
-        switch (highlight) {
-            case 'Expert':
-                return 'success.main';
-            case 'Advanced':
-                return 'warning.main';
-            default:
-                return 'info.main';
-        }
-    };
-
     return (
         <Card
             sx={{
@@ -73,20 +62,6 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
                             >
                                 {area.category}
                             </Typography>
-                            <Box
-                                sx={{
-                                    px: 2,
-                                    py: 0.5,
-                                    borderRadius: 2,
-                                    backgroundColor: getHighlightColor(area.highlight),
-                                    color: 'white',
-                                    fontSize: '0.75rem',
-                                    fontWeight: 600,
-                                    textTransform: 'uppercase',
-                                }}
-                            >
-                                {area.highlight}
-                            </Box>
                         </Box>
                         <Box
                             sx={{

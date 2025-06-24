@@ -10,7 +10,6 @@ export interface TechnicalArea {
     technologies: Technology[];
     description: string;
     descriptionHighlight: string;
-    highlight: 'Expert' | 'Advanced' | 'Proficient';
 }
 
 export interface Experience {
@@ -65,7 +64,6 @@ export const technicalAreas: TechnicalArea[] = [
         ],
         description: `Building responsive, accessible user experiences with modern frameworks and libraries`,
         descriptionHighlight: 'I write JavaScript that works (after a few Stack Overflow dives)',
-        highlight: 'Expert'
     },
     {
         category: 'Backend Architecture',
@@ -80,7 +78,6 @@ export const technicalAreas: TechnicalArea[] = [
         ],
         description: 'Scalable server-side solutions and API design',
         descriptionHighlight:'I turn APIs into magic—or at least functioning endpoints',
-        highlight: 'Advanced'
     },
     {
         category: 'Database & Cloud',
@@ -94,7 +91,6 @@ export const technicalAreas: TechnicalArea[] = [
         ],
         description: 'Data architecture and cloud infrastructure management',
         descriptionHighlight:'I send code to production and pray nothing breaks.' ,
-        highlight: 'Proficient'
     },
 ];
 

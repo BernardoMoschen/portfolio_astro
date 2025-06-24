@@ -269,7 +269,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
             <Box
                 sx={{
                     position: 'absolute',
-                    right: isMobile ? -35 : -70,
+                    right: isMobile ? -15 : -70,
                     bottom: isMobile ? 20 : 40,
                     textAlign: 'right',
                     zIndex: 2,
