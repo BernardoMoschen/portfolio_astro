@@ -30,6 +30,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             {menuItems.map((item, index) => (
                 <Button
                     key={item.label}
+                    disableFocusRipple
+                    disableTouchRipple
+                    disableRipple
+                    disableElevation
                     onClick={() => onMenuClick(item.href)}
                     sx={{
                         color: activeSection === item.href.replace('#', '')
@@ -43,11 +47,12 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
                         py: 1,
                         borderRadius: 2,
                         border: '1px solid transparent',
+                        boxShadow: 'none',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         '&:hover': {
                             color: 'primary.main',
+                            boxShadow: 'none',
                             backgroundColor: `${theme.palette.primary.main}10`,
-                            borderColor: theme.palette.primary.main,
                             transform: 'translateY(-2px)',
                         },
                         '&::after': {

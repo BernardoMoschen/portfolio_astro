@@ -44,6 +44,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ isMobile, onContactClick 
                 sx={{
                     borderColor: 'primary.main',
                     color: 'primary.main',
+                    boxShadow: 'none',
                     '&:hover': {
                         borderColor: 'primary.dark',
                         backgroundColor: 'primary.main',

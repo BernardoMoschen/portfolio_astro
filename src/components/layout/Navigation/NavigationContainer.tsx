@@ -98,7 +98,6 @@ const NavigationContainer: React.FC = () => {
             >
                 <Toolbar sx={{ minHeight: { xs: 64, sm: 72 } }}>
                     <BrandLogo trigger={trigger} onClick={handleBrandClick} />
-                    
                     {isMobile ? (
                         <MobileNavigation
                             open={mobileOpen}
@@ -115,7 +114,6 @@ const NavigationContainer: React.FC = () => {
                     )}
                 </Toolbar>
             </AppBar>
-
             <ScrollToTopButton show={trigger} onClick={scrollToTop} />
         </>
     );

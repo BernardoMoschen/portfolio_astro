@@ -33,8 +33,8 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                 width: '100%',
                 maxWidth: isMobile ? 350 : 600,
                 mx: 'auto',
-                // Add padding to prevent overlapping with adjacent elements
-                px: isMobile ? 4 : 8,
+                // Add padding to prevent overlapping with adjacent elements and experience badge cutoff
+                px: isMobile ? 6 : 8,
                 py: isMobile ? 2 : 4,
             }}
         >
@@ -75,12 +75,21 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
             <Box
                 sx={{
                     position: 'absolute',
-                    left: isMobile ? -30 : -60,
+                    left: isMobile ? 5 : -20,
                     top: '50%',
                     transform: 'translateY(-50%)',
                     textAlign: 'center',
                     zIndex: 2,
-                    minWidth: isMobile ? 60 : 80,
+                    minWidth: isMobile ? 40 : 70,
+                    // Add responsive overflow handling for extra safety
+                    '@media (max-width: 480px)': {
+                        left: 10,
+                        minWidth: 35,
+                    },
+                    '@media (max-width: 360px)': {
+                        left: 15,
+                        minWidth: 30,
+                    },
                 }}
             >
                 <Typography
@@ -88,12 +97,19 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         fontWeight: 800,
                         color: 'primary.main',
-                        fontSize: isMobile ? '2rem' : '3.5rem',
+                        fontSize: isMobile ? '1.2rem' : '3rem',
                         lineHeight: 1,
                         textShadow: theme.palette.mode === 'dark'
                             ? `2px 2px 4px ${theme.palette.primary.main}40`
                             : `3px 3px 6px ${theme.palette.primary.main}60`,
                         filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.3))',
+                        // Add responsive sizing for very small screens
+                        '@media (max-width: 480px)': {
+                            fontSize: '1rem',
+                        },
+                        '@media (max-width: 360px)': {
+                            fontSize: '0.9rem',
+                        },
                     }}
                 >
                     05
@@ -103,13 +119,20 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     sx={{
                         color: 'text.secondary',
                         fontWeight: 600,
-                        fontSize: isMobile ? '0.6rem' : '0.7rem',
+                        fontSize: isMobile ? '0.4rem' : '0.6rem',
                         lineHeight: 1.2,
                         display: 'block',
                         transform: isMobile ? 'none' : 'rotate(-90deg)',
                         transformOrigin: 'center',
                         whiteSpace: 'nowrap',
                         mt: isMobile ? 0.5 : 1,
+                        // Add responsive sizing for very small screens
+                        '@media (max-width: 480px)': {
+                            fontSize: '0.35rem',
+                        },
+                        '@media (max-width: 360px)': {
+                            fontSize: '0.3rem',
+                        },
                     }}
                 >
                     {isMobile ? 'YRS' : 'YEARS'}

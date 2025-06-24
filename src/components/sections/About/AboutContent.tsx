@@ -16,6 +16,7 @@ const AboutContent: React.FC = () => {
     const [selectedTab, setSelectedTab] = useState<number>(1);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
 
     const handleChange = (_event: SyntheticEvent, newValue: number) => {
         setSelectedTab(newValue);
@@ -28,20 +29,21 @@ const AboutContent: React.FC = () => {
                     <TabList
                         onChange={handleChange}
                         aria-label="about-section-tabs"
-                        variant={isMobile ? "scrollable" : "standard"}
-                        scrollButtons={isMobile ? "auto" : false}
+                        variant={(isMobile || isTablet) ? "scrollable" : "standard"}
+                        scrollButtons={(isMobile || isTablet) ? "auto" : false}
                         allowScrollButtonsMobile
                         sx={{
                             mb: 3,
                             '& .MuiTabs-flexContainer': {
-                                justifyContent: isMobile ? 'flex-start' : 'center',
+                                justifyContent: (isMobile || isTablet) ? 'flex-start' : 'center',
                             },
                             '& .MuiTab-root': {
-                                minWidth: isMobile ? 'auto' : 120,
-                                fontSize: isMobile ? '0.875rem' : '1rem',
+                                minWidth: isMobile ? 100 : isTablet ? 110 : 120,
+                                fontSize: isMobile ? '0.75rem' : isTablet ? '0.85rem' : '1rem',
                                 fontWeight: 600,
                                 textTransform: 'none',
                                 color: theme.palette.text.secondary,
+                                px: isMobile ? 1 : isTablet ? 1.5 : 2,
                                 '&.Mui-selected': {
                                     color: theme.palette.primary.main,
                                 },
@@ -50,6 +52,9 @@ const AboutContent: React.FC = () => {
                                 backgroundColor: theme.palette.primary.main,
                                 height: 3,
                                 borderRadius: '2px 2px 0 0',
+                            },
+                            '& .MuiTabs-scroller': {
+                                overflowX: (isMobile || isTablet) ? 'auto' : 'hidden',
                             },
                         }}
                     >
@@ -76,9 +81,10 @@ const AboutContent: React.FC = () => {
                                     mb: 3,
                                     lineHeight: 1.7,
                                     color: 'text.secondary',
-                                    fontSize: isMobile ? '1rem' : '1.2rem',
+                                    fontSize: isMobile ? '0.9rem' : isTablet ? '1rem' : '1.1rem',
                                     textAlign: isMobile ? 'left' : 'justify',
                                     maxWidth: '100%',
+                                    px: isMobile ? 0 : 1,
                                 }}
                             >
                                 {brief}

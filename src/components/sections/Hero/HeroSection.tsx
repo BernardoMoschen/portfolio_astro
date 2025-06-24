@@ -44,7 +44,13 @@ const HeroSection: React.FC = () => {
             }}
         >
             <BackgroundElements />
-            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, py: isMobile ? 4 : 0 }}>
+            <Container maxWidth="lg" sx={{
+                position: 'relative',
+                zIndex: 1,
+                py: isMobile ? 4 : 0,
+                // Add responsive padding to prevent experience badge cutoff
+                px: { xs: 6, sm: 4, md: 3 },
+            }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -54,7 +60,7 @@ const HeroSection: React.FC = () => {
                         textAlign: isMobile ? 'center' : 'left',
                         minHeight: isMobile ? 'auto' : '80vh',
                         width: '100%',
-                        px: isMobile ? 2 : 0,
+                        px: isMobile ? 1 : 0,
                     }}
                 >
                     <Box
