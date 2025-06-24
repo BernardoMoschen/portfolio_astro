@@ -321,9 +321,9 @@ const ContactSection: React.FC = () => {
                                                 startIcon={<Send />}
                                                 disabled={loading}
                                                 sx={{
-                                                    background: 'linear-gradient(45deg, #3f51b5 30%, #f50057 90%)',
+                                                    background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.secondary.main} 90%)`,
                                                     '&:hover': {
-                                                        background: 'linear-gradient(45deg, #2c387e 30%, #c51162 90%)',
+                                                        background: `linear-gradient(45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.secondary.dark} 90%)`,
                                                     },
                                                     px: 4,
                                                     py: 1.5,

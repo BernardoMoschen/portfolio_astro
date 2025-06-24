@@ -62,7 +62,7 @@ const FooterSection: React.FC = () => {
                         variant="h6"
                         sx={{
                             fontWeight: 600,
-                            background: 'linear-gradient(45deg, #3f51b5 30%, #f50057 90%)',
+                            background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.secondary.main} 90%)`,
                             backgroundClip: 'text',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
