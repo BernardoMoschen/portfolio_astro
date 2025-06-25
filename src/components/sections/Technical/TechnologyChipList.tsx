@@ -18,7 +18,6 @@ interface TechnologyChipListProps {
 
 const TechnologyChipList: React.FC<TechnologyChipListProps> = ({ technologies }) => {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [showAll, setShowAll] = useState(false);
 
     const featuredTechnologies = technologies.filter(tech => tech.featured);

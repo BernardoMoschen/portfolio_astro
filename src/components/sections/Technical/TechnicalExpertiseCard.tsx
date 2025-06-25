@@ -150,8 +150,6 @@ const TechnicalExpertiseCard: React.FC<TechnicalExpertiseCardProps> = ({ area })
                         </Box>
                     </Box>
                 </Box>
-
-                {/* Technologies Section */}
                 <TechnologyChipList technologies={area.technologies} />
             </CardContent>
         </Card>
