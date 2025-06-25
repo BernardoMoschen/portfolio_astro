@@ -25,6 +25,7 @@ import {
     Schedule,
 } from '@mui/icons-material';
 import { projects } from '../../data/projectsData';
+import siteConfig from '../../../config/site';
 
 // Helper function to get status information
 const getStatusInfo = (status: string) => {
@@ -581,7 +582,7 @@ const ProjectsSection: React.FC = () => {
                         variant="outlined"
                         size="large"
                         startIcon={<GitHub />}
-                        href="https://github.com/yourusername" // Replace with your GitHub
+                        href={siteConfig.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{

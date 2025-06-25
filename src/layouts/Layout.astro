@@ -1,34 +1,187 @@
 ---
+import siteConfig, { getSiteUrl } from '../config/site';
+
 export interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  ogImage?: string;
+  canonical?: string;
 }
 
-const { title, description = "Full Stack Developer Portfolio" } = Astro.props;
+const {
+  title,
+  description = siteConfig.description,
+  keywords = siteConfig.keywords.join(', '),
+  ogImage = "/og-image.jpg",
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = getSiteUrl();
+const fullUrl = new URL(canonical, siteUrl);
+const fullOgImage = new URL(ogImage, siteUrl);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="theme-color" content="#7fb069" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Bernardo Moschen" />
+    <link rel="canonical" href={fullUrl} />
 
-    <!-- Google Fonts -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Bernardo Moschen - Full Stack Developer Portfolio"
+    />
+    <meta property="og:site_name" content="Bernardo Moschen - Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bernardomoschen" />
+    <meta name="twitter:creator" content="@bernardomoschen" />
+    <meta name="twitter:url" content={fullUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+    <meta
+      name="twitter:image:alt"
+      content="Bernardo Moschen - Full Stack Developer Portfolio"
+    />
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Resource hints for better performance -->
+    <link rel="prefetch" href="/resume.pdf" />
+    <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml" />
+
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Material Icons -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": siteConfig.name,
+        "jobTitle": siteConfig.title,
+        "url": siteConfig.url,
+        "image": new URL(siteConfig.profileImage, siteUrl).toString(),
+        "email": siteConfig.email,
+        "telephone": "+1-XXX-XXX-XXXX",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          siteConfig.linkedin,
+          siteConfig.github
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Paradise Mobile",
+          "url": "https://www.linkedin.com/company/paradise-mobile"
+        },
+        "description": "Full Stack Developer with 5+ years of experience building scalable web applications using React, Node.js, and modern technologies.",
+        "knowsAbout": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "Full Stack Development",
+          "Web Development",
+          "JavaScript",
+          "PostgreSQL",
+          "AWS",
+          "Material UI",
+          "GraphQL",
+          "Docker",
+          "C#",
+          ".NET"
+        ],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Your University"
+        },
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "educationalLevel": "Bachelor"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Additional structured data for portfolio -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": `${siteConfig.name} - Portfolio`,
+        "url": siteConfig.url,
+        "description": siteConfig.description,
+        "author": {
+          "@type": "Person",
+          "name": siteConfig.name
+        },
+        "inLanguage": "en-US",
+        "copyrightYear": "2024",
+        "genre": "Portfolio"
+      }
+    </script>
   </head>
   <body>
     <slot />

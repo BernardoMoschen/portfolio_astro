@@ -15,6 +15,7 @@ import {
     Email,
     Favorite,
 } from '@mui/icons-material';
+import siteConfig from '../../../config/site';
 
 const FooterSection: React.FC = () => {
     const theme = useTheme();
@@ -24,17 +25,17 @@ const FooterSection: React.FC = () => {
         {
             icon: <GitHub />,
             label: 'GitHub',
-            url: 'https://github.com/bernardoMoschen',
+            url: siteConfig.github,
         },
         {
             icon: <LinkedIn />,
             label: 'LinkedIn',
-            url: 'https://linkedin.com/in/bernardomoschen',
+            url: siteConfig.linkedin,
         },
         {
             icon: <Email />,
             label: 'Email',
-            url: 'mailto:bernardo.moschen@example.com',
+            url: `mailto:${siteConfig.email}`,
         },
     ];
 
@@ -68,7 +69,7 @@ const FooterSection: React.FC = () => {
                             WebkitTextFillColor: 'transparent',
                         }}
                     >
-                        Bernardo Moschen
+                        {siteConfig.name}
                     </Typography>
 
                     {/* Social Links */}
@@ -111,7 +112,7 @@ const FooterSection: React.FC = () => {
                             textAlign: isMobile ? 'center' : 'left',
                         }}
                     >
-                        © {currentYear} Bernardo Moschen. All rights reserved.
+                        © {currentYear} {siteConfig.name}. All rights reserved.
                     </Typography>
 
                     <Typography

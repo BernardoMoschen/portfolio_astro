@@ -1,3 +1,5 @@
+import siteConfig from '../../config/site';
+
 interface ProjectData {
     title: string;
     description: string;
@@ -16,7 +18,7 @@ export const projects:  ProjectData[] = [
             image: '/project-portfolio.jpg',
             technologies: ['Astro', 'React', 'Material UI', 'TypeScript'],
             githubUrl: 'https://github.com/BernardoMoschen/portfolio_astro',
-            liveUrl: 'https://bernardomoschen.dev', // Update with your actual domain
+            liveUrl: siteConfig.url,
             featured: true,
             status: 'completed'
         },

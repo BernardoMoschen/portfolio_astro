@@ -23,6 +23,7 @@ import {
     Send,
     LocationOn,
 } from '@mui/icons-material';
+import siteConfig from '../../../config/site';
 
 const ContactSection: React.FC = () => {
     const theme = useTheme();
@@ -83,8 +84,8 @@ const ContactSection: React.FC = () => {
         {
             icon: <Email />,
             label: 'Email',
-            value: 'bernardo.moschen@example.com',
-            link: 'mailto:bernardo.moschen@example.com',
+            value: siteConfig.email,
+            link: `mailto:${siteConfig.email}`,
         },
         // {
         //     icon: <Phone />,
@@ -104,12 +105,12 @@ const ContactSection: React.FC = () => {
         {
             icon: <GitHub />,
             label: 'GitHub',
-            url: 'https://github.com/bernardoMoschen',
+            url: siteConfig.github,
         },
         {
             icon: <LinkedIn />,
             label: 'LinkedIn',
-            url: 'https://linkedin.com/in/bernardomoschen',
+            url: siteConfig.linkedin,
         },
         // {
         //     icon: <Twitter />,
@@ -119,7 +120,7 @@ const ContactSection: React.FC = () => {
         {
             icon: <Email />,
             label: 'Email',
-            url: 'mailto:bernardomoschen.dev@gmail.com',
+            url: `mailto:${siteConfig.email}`,
         },
     ];
 
