@@ -7,43 +7,43 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
   palette: {
     mode,
     primary: {
-      main: mode === 'dark' ? '#7fb069' : '#4a6741', // Moss green - brighter for dark mode
-      light: mode === 'dark' ? '#a8d084' : '#7fb069',
-      dark: mode === 'dark' ? '#5a8049' : '#2d3e26',
+      main: mode === 'dark' ? '#7fb069' : '#2d5a27', // Darker green for better contrast in light mode
+      light: mode === 'dark' ? '#a8d084' : '#4a6741',
+      dark: mode === 'dark' ? '#5a8049' : '#1a3317',
     },
     secondary: {
-      main: mode === 'dark' ? '#ff8a50' : '#e76f51', // Fire orange - brighter for dark mode
-      light: mode === 'dark' ? '#ffaa7a' : '#ff8a50',
-      dark: mode === 'dark' ? '#cc5722' : '#b85439',
+      main: mode === 'dark' ? '#ff8a50' : '#c44536', // Darker orange for better contrast in light mode
+      light: mode === 'dark' ? '#ffaa7a' : '#e76f51',
+      dark: mode === 'dark' ? '#cc5722' : '#8b2f1f',
     },
     background: {
-      default: mode === 'dark' ? '#0d1117' : '#f8f6f0', // Dark navy vs warm off-white
-      paper: mode === 'dark' ? '#161b22' : '#ffffff', // Slightly lighter dark vs pure white
+      default: mode === 'dark' ? '#0d1117' : '#fdfcf8', // Slightly warmer white
+      paper: mode === 'dark' ? '#161b22' : '#ffffff',
     },
     text: {
-      primary: mode === 'dark' ? '#f0f6fc' : '#1a1a1a', // Bright white vs dark charcoal
-      secondary: mode === 'dark' ? '#8b949e' : '#6a6a6a', // Light gray vs medium gray
+      primary: mode === 'dark' ? '#f0f6fc' : '#1a1a1a', // Darker text for better contrast
+      secondary: mode === 'dark' ? '#8b949e' : '#555555', // Darker secondary text
     },
     // Custom colors for better theming
     info: {
-      main: mode === 'dark' ? '#6cb6ff' : '#0969da', // Bright blue for dark mode
-      light: mode === 'dark' ? '#94ccff' : '#54aeff',
-      dark: mode === 'dark' ? '#4493f8' : '#0550ae',
+      main: mode === 'dark' ? '#6cb6ff' : '#0550ae', // Darker blue for light mode
+      light: mode === 'dark' ? '#94ccff' : '#0969da',
+      dark: mode === 'dark' ? '#4493f8' : '#033d8b',
     },
     success: {
-      main: mode === 'dark' ? '#3fb950' : '#1a7f37', // Bright green for dark mode
-      light: mode === 'dark' ? '#7ee787' : '#4ac26b',
-      dark: mode === 'dark' ? '#2ea043' : '#116329',
+      main: mode === 'dark' ? '#3fb950' : '#116329', // Darker green for light mode
+      light: mode === 'dark' ? '#7ee787' : '#1a7f37',
+      dark: mode === 'dark' ? '#2ea043' : '#0d4818',
     },
     warning: {
-      main: mode === 'dark' ? '#d29922' : '#bf8700', // Bright amber for dark mode
-      light: mode === 'dark' ? '#e2cc67' : '#d4a72c',
-      dark: mode === 'dark' ? '#bb7506' : '#9a6700',
+      main: mode === 'dark' ? '#d29922' : '#9a6700', // Darker amber for light mode
+      light: mode === 'dark' ? '#e2cc67' : '#bf8700',
+      dark: mode === 'dark' ? '#bb7506' : '#7d4900',
     },
     error: {
-      main: mode === 'dark' ? '#f85149' : '#cf222e', // Bright red for dark mode
-      light: mode === 'dark' ? '#ff7b72' : '#ff6b6b',
-      dark: mode === 'dark' ? '#da3633' : '#a40e26',
+      main: mode === 'dark' ? '#f85149' : '#a40e26', // Darker red for light mode
+      light: mode === 'dark' ? '#ff7b72' : '#cf222e',
+      dark: mode === 'dark' ? '#da3633' : '#7d0a1a',
     },
   },
   typography: {
@@ -95,11 +95,12 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
         contained: {
           background: mode === 'dark'
             ? 'linear-gradient(45deg, #7fb069 30%, #ff8a50 90%)'
-            : 'linear-gradient(45deg, #4a6741 30%, #e76f51 90%)',
+            : 'linear-gradient(45deg, #2d5a27 30%, #c44536 90%)',
+          color: '#ffffff',
           '&:hover': {
             background: mode === 'dark'
               ? 'linear-gradient(45deg, #a8d084 30%, #ffaa7a 90%)'
-              : 'linear-gradient(45deg, #5a8049 30%, #ff8a50 90%)',
+              : 'linear-gradient(45deg, #1a3317 30%, #8b2f1f 90%)',
           },
         },
       },
@@ -111,13 +112,13 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
           backdropFilter: 'blur(10px)',
           border: mode === 'dark'
             ? '1px solid rgba(127, 176, 105, 0.2)'
-            : '1px solid rgba(74, 103, 65, 0.2)',
+            : '1px solid rgba(45, 90, 39, 0.15)',
           boxShadow: mode === 'dark'
             ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(127, 176, 105, 0.1)'
-            : '0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(74, 103, 65, 0.1)',
+            : '0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(45, 90, 39, 0.08)',
           background: mode === 'dark'
             ? 'linear-gradient(135deg, rgba(22, 27, 34, 0.8) 0%, rgba(127, 176, 105, 0.05) 100%)'
-            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(74, 103, 65, 0.03) 100%)',
+            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(45, 90, 39, 0.02) 100%)',
         },
       },
     },
@@ -130,10 +131,11 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
         filled: {
           background: mode === 'dark'
             ? 'linear-gradient(45deg, rgba(127, 176, 105, 0.2) 0%, rgba(255, 138, 80, 0.2) 100%)'
-            : 'linear-gradient(45deg, rgba(74, 103, 65, 0.1) 0%, rgba(231, 111, 81, 0.1) 100%)',
+            : 'linear-gradient(45deg, rgba(45, 90, 39, 0.12) 0%, rgba(196, 69, 54, 0.12) 100%)',
           border: mode === 'dark'
             ? '1px solid rgba(127, 176, 105, 0.3)'
-            : '1px solid rgba(74, 103, 65, 0.3)',
+            : '1px solid rgba(45, 90, 39, 0.25)',
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
         },
       },
     },
@@ -142,6 +144,54 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
         root: {
           background: 'transparent',
           boxShadow: 'none',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          // Ensure good contrast for all text
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h1: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h2: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h3: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h4: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h5: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        h6: {
+          color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+        },
+        subtitle1: {
+          color: mode === 'dark' ? '#8b949e' : '#555555',
+        },
+        subtitle2: {
+          color: mode === 'dark' ? '#8b949e' : '#555555',
+        },
+        body2: {
+          color: mode === 'dark' ? '#8b949e' : '#555555',
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: mode === 'dark' ? '#8b949e' : '#555555',
+          '&:hover': {
+            color: mode === 'dark' ? '#7fb069' : '#2d5a27',
+            backgroundColor: mode === 'dark'
+              ? 'rgba(127, 176, 105, 0.1)'
+              : 'rgba(45, 90, 39, 0.08)',
+          },
         },
       },
     },

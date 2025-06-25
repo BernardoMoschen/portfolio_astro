@@ -5,8 +5,8 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 // Import site config for consistency
-const siteUrl = 'https://bernardomoschen.dev';
-const siteDomain = 'bernardomoschen.dev';
+const siteUrl = 'https://bernardo-moschen.vercel.app/';
+const siteDomain = 'vercel.app';
 
 // https://astro.build/config
 export default defineConfig({
