@@ -54,7 +54,6 @@ const ContactSection: React.FC = () => {
         setLoading(true);
 
         try {
-            // Simulate form submission - replace with your actual form handling
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             setSnackbar({
@@ -87,12 +86,6 @@ const ContactSection: React.FC = () => {
             value: siteConfig.email,
             link: `mailto:${siteConfig.email}`,
         },
-        // {
-        //     icon: <Phone />,
-        //     label: 'Phone',
-        //     value: '+1 (555) 123-4567',
-        //     link: 'tel:+15551234567',
-        // },
         {
             icon: <LocationOn />,
             label: 'Location',
@@ -112,11 +105,6 @@ const ContactSection: React.FC = () => {
             label: 'LinkedIn',
             url: siteConfig.linkedin,
         },
-        // {
-        //     icon: <Twitter />,
-        //     label: 'Twitter',
-        //     url: 'https://twitter.com/yourusername',
-        // },
         {
             icon: <Email />,
             label: 'Email',

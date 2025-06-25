@@ -13,7 +13,6 @@ export const scrollToSection = (sectionId: string) => {
         });
     }
 };
-// I like to build useful stuff, break things on purpose, and obsess over clean code and clever UIs.
 
 export const PERSONAL_INFO = {
     name: 'Bernardo Moschen',

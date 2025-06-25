@@ -33,7 +33,6 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                 width: '100%',
                 maxWidth: isMobile ? 350 : 600,
                 mx: 'auto',
-                // Add padding to prevent overlapping with adjacent elements and experience badge cutoff
                 px: isMobile ? 6 : 8,
                 py: isMobile ? 2 : 4,
             }}
@@ -81,7 +80,6 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                     textAlign: 'center',
                     zIndex: 2,
                     minWidth: isMobile ? 40 : 70,
-                    // Add responsive overflow handling for extra safety
                     '@media (max-width: 480px)': {
                         left: 10,
                         minWidth: 35,
@@ -103,7 +101,6 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                             ? `2px 2px 4px ${theme.palette.primary.main}40`
                             : `3px 3px 6px ${theme.palette.primary.main}60`,
                         filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.3))',
-                        // Add responsive sizing for very small screens
                         '@media (max-width: 480px)': {
                             fontSize: '1rem',
                         },
@@ -126,7 +123,6 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                         transformOrigin: 'center',
                         whiteSpace: 'nowrap',
                         mt: isMobile ? 0.5 : 1,
-                        // Add responsive sizing for very small screens
                         '@media (max-width: 480px)': {
                             fontSize: '0.35rem',
                         },

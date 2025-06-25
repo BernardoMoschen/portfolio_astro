@@ -186,7 +186,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
             open={open}
             onClose={onClose}
             ModalProps={{
-                keepMounted: true, // Better mobile performance
+                keepMounted: true,
             }}
             sx={{
                 '& .MuiDrawer-paper': {

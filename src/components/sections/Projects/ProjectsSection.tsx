@@ -27,7 +27,6 @@ import {
 import { projects } from '../../data/projectsData';
 import siteConfig from '../../../config/site';
 
-// Helper function to get status information
 const getStatusInfo = (status: string) => {
     switch (status) {
         case 'completed':
@@ -264,7 +263,6 @@ const ProjectsSection: React.FC = () => {
                                             sx={{
                                                 fontWeight: 600,
                                                 boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                                                // Override any conflicting background styles
                                                 '&.MuiChip-colorSuccess': {
                                                     backgroundColor: theme.palette.success.main,
                                                     color: theme.palette.success.contrastText,
@@ -277,7 +275,6 @@ const ProjectsSection: React.FC = () => {
                                                     backgroundColor: theme.palette.info.main,
                                                     color: theme.palette.info.contrastText,
                                                 },
-                                                // Ensure no background images override the solid colors
                                                 backgroundImage: 'none !important',
                                             }}
                                         />
@@ -464,7 +461,6 @@ const ProjectsSection: React.FC = () => {
                                                 variant="outlined"
                                                 sx={{
                                                     fontSize: '0.75rem',
-                                                    // Ensure no background images override the chip styling
                                                     backgroundImage: 'none !important',
                                                 }}
                                             />

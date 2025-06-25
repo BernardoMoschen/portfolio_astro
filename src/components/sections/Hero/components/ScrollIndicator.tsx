@@ -19,7 +19,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ onScrollClick }) => {
                 transform: 'translateX(-50%)',
                 cursor: 'pointer',
                 zIndex: 1,
-                display: isMobile ? 'none' : 'block', // Hide on mobile to prevent overlapping
+                display: isMobile ? 'none' : 'block',
                 animation: 'bounce 2s infinite',
                 '@keyframes bounce': {
                     '0%, 20%, 50%, 80%, 100%': {

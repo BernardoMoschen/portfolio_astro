@@ -2,46 +2,44 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
-// Define theme colors for both modes
 const getTheme = (mode: 'light' | 'dark') => createTheme({
   palette: {
     mode,
     primary: {
-      main: mode === 'dark' ? '#7fb069' : '#2d5a27', // Darker green for better contrast in light mode
+      main: mode === 'dark' ? '#7fb069' : '#2d5a27',
       light: mode === 'dark' ? '#a8d084' : '#4a6741',
       dark: mode === 'dark' ? '#5a8049' : '#1a3317',
     },
     secondary: {
-      main: mode === 'dark' ? '#ff8a50' : '#c44536', // Darker orange for better contrast in light mode
+      main: mode === 'dark' ? '#ff8a50' : '#c44536',
       light: mode === 'dark' ? '#ffaa7a' : '#e76f51',
       dark: mode === 'dark' ? '#cc5722' : '#8b2f1f',
     },
     background: {
-      default: mode === 'dark' ? '#0d1117' : '#fdfcf8', // Slightly warmer white
+      default: mode === 'dark' ? '#0d1117' : '#fdfcf8',
       paper: mode === 'dark' ? '#161b22' : '#ffffff',
     },
     text: {
-      primary: mode === 'dark' ? '#f0f6fc' : '#1a1a1a', // Darker text for better contrast
-      secondary: mode === 'dark' ? '#8b949e' : '#555555', // Darker secondary text
+      primary: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
+      secondary: mode === 'dark' ? '#8b949e' : '#555555',
     },
-    // Custom colors for better theming
     info: {
-      main: mode === 'dark' ? '#6cb6ff' : '#0550ae', // Darker blue for light mode
+      main: mode === 'dark' ? '#6cb6ff' : '#0550ae',
       light: mode === 'dark' ? '#94ccff' : '#0969da',
       dark: mode === 'dark' ? '#4493f8' : '#033d8b',
     },
     success: {
-      main: mode === 'dark' ? '#3fb950' : '#116329', // Darker green for light mode
+      main: mode === 'dark' ? '#3fb950' : '#116329',
       light: mode === 'dark' ? '#7ee787' : '#1a7f37',
       dark: mode === 'dark' ? '#2ea043' : '#0d4818',
     },
     warning: {
-      main: mode === 'dark' ? '#d29922' : '#9a6700', // Darker amber for light mode
+      main: mode === 'dark' ? '#d29922' : '#9a6700',
       light: mode === 'dark' ? '#e2cc67' : '#bf8700',
       dark: mode === 'dark' ? '#bb7506' : '#7d4900',
     },
     error: {
-      main: mode === 'dark' ? '#f85149' : '#a40e26', // Darker red for light mode
+      main: mode === 'dark' ? '#f85149' : '#a40e26',
       light: mode === 'dark' ? '#ff7b72' : '#cf222e',
       dark: mode === 'dark' ? '#da3633' : '#7d0a1a',
     },
@@ -150,7 +148,6 @@ const getTheme = (mode: 'light' | 'dark') => createTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
-          // Ensure good contrast for all text
           color: mode === 'dark' ? '#f0f6fc' : '#1a1a1a',
         },
         h1: {
@@ -218,7 +215,7 @@ interface ThemeContextProviderProps {
 }
 
 export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true); // Default to dark mode
+  const [darkMode, setDarkMode] = useState(true);
 
   // Load theme preference from localStorage on mount
   useEffect(() => {
