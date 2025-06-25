@@ -90,7 +90,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
                                 fontFamily: 'monospace',
                             }}
                         >
-                            dev@portfolio
+                            bernardo.moschen
                         </Typography>
                     </Box>
                     <IconButton
@@ -121,13 +121,6 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
                         },
                     }}
                 />
-
-                <Box sx={{ mt: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <ThemeToggle size="small" />
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>
-                        theme.toggle()
-                    </Typography>
-                </Box>
             </Box>
 
             {/* Navigation Menu */}

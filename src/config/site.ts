@@ -5,13 +5,13 @@ export const siteConfig = {
   email: 'bernardomoschen.dev@gmail.com', // Your actual email
   
   name: 'Bernardo Moschen',
-  title: 'Full-Stack Developer',
+  title: 'Full-Stack Engineer',
   
   github: 'https://github.com/BernardoMoschen', // Update with your actual GitHub
   linkedin: 'https://linkedin.com/in/bernardomoschen', // Update with your actual LinkedIn
   
-  description: 'Full-Stack Developer specializing in modern web technologies',
-  keywords: ['Full-Stack Developer', 'React', 'TypeScript', 'Node.js', 'Web Development'],
+  description: 'Full-Stack engineer specializing in modern web technologies',
+  keywords: ['Full-Stack engineer', 'React', 'TypeScript', 'Node.js', 'Web Development'],
   
   profileImage: '/profile-photo.jpeg',
   favicon: '/favicon.svg',

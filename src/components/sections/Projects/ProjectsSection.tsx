@@ -248,6 +248,9 @@ const ProjectsSection: React.FC = () => {
                                         size="small"
                                         sx={{
                                             backgroundColor: theme.palette.secondary.main,
+                                            '& .MuiChip-icon': {
+                                                color: theme.palette.success.contrastText,
+                                            },
                                             color: theme.palette.secondary.contrastText,
                                             fontWeight: 600,
                                             boxShadow: `0 2px 8px rgba(0,0,0,0.2)`,

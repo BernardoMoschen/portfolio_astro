@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Box,
+    Divider,
     IconButton,
     useTheme,
 } from '@mui/material';
@@ -15,7 +16,7 @@ const MobileMenuButton: React.FC<MobileMenuButtonProps> = ({ onClick }) => {
     const theme = useTheme();
 
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, }}>
             <ThemeToggle />
             <IconButton
                 color="inherit"

@@ -224,9 +224,9 @@ const ContactSection: React.FC = () => {
                     Whether you have a question or just want to say hi, feel free to reach out!
                 </Typography>
 
-                <Grid container spacing={4}>
+                <Grid container spacing={isMobile ? 3 : 4}>
                     {/* Contact Form */}
-                    <Grid size={{ xs: 12, md: 8 }}>
+                    <Grid size={{ xs: 12, sm: 12, md: 7, lg: 8 }}>
                         <Card
                             sx={{
                                 background: theme.palette.mode === 'dark'
@@ -426,8 +426,8 @@ const ContactSection: React.FC = () => {
                     </Grid>
 
                     {/* Contact Info */}
-                    <Grid size={{ xs: 12, md: 4 }}>
-                        <Stack spacing={3}>
+                    <Grid size={{ xs: 12, sm: 12, md: 5, lg: 4 }}>
+                        <Stack spacing={isMobile ? 2 : 3}>
                             {/* Contact Information */}
                             <Card
                                 sx={{
@@ -440,21 +440,31 @@ const ContactSection: React.FC = () => {
                                     borderRadius: 2,
                                 }}
                             >
-                                <CardContent sx={{ p: 3 }}>
+                                <CardContent sx={{ p: isMobile ? 2.5 : 3 }}>
                                     <Typography
                                         variant="h5"
                                         sx={{
                                             mb: 3,
                                             fontWeight: 600,
                                             color: 'primary.main',
+                                            fontSize: isMobile ? '1.4rem' : '1.5rem',
+                                            textAlign: isMobile ? 'center' : 'left',
                                         }}
                                     >
                                         Contact Information
                                     </Typography>
 
-                                    <Stack spacing={2}>
+                                    <Stack spacing={2.5}>
                                         {contactInfo.map((info, index) => (
-                                            <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                            <Box
+                                                key={index}
+                                                sx={{
+                                                    display: 'flex',
+                                                    alignItems: isMobile ? 'center' : 'center',
+                                                    gap: 2,
+                                                    flexDirection: 'row',
+                                                }}
+                                            >
                                                 <Box
                                                     sx={{
                                                         display: 'flex',
@@ -465,14 +475,26 @@ const ContactSection: React.FC = () => {
                                                         borderRadius: '50%',
                                                         backgroundColor: 'primary.main',
                                                         color: 'white',
+                                                        flexShrink: 0,
+                                                        alignSelf: isMobile ? 'center' : 'flex-start',
                                                     }}
                                                 >
                                                     {info.icon}
                                                 </Box>
-                                                <Box>
+                                                <Box
+                                                    sx={{
+                                                        flex: 1,
+                                                        minWidth: 0,
+                                                        textAlign: 'left',
+                                                    }}
+                                                >
                                                     <Typography
                                                         variant="body2"
-                                                        sx={{ color: 'text.secondary', fontSize: '0.875rem' }}
+                                                        sx={{
+                                                            color: 'text.secondary',
+                                                            fontSize: '0.875rem',
+                                                            mb: 0.5,
+                                                        }}
                                                     >
                                                         {info.label}
                                                     </Typography>
@@ -484,6 +506,10 @@ const ContactSection: React.FC = () => {
                                                             sx={{
                                                                 color: 'text.primary',
                                                                 textDecoration: 'none',
+                                                                fontSize: isMobile ? '0.9rem' : '1rem',
+                                                                wordBreak: 'break-word',
+                                                                lineHeight: 1.4,
+                                                                display: 'block',
                                                                 '&:hover': {
                                                                     color: 'primary.main',
                                                                 },
@@ -492,7 +518,15 @@ const ContactSection: React.FC = () => {
                                                             {info.value}
                                                         </Typography>
                                                     ) : (
-                                                        <Typography variant="body1" sx={{ color: 'text.primary' }}>
+                                                        <Typography
+                                                            variant="body1"
+                                                            sx={{
+                                                                color: 'text.primary',
+                                                                fontSize: isMobile ? '0.9rem' : '1rem',
+                                                                wordBreak: 'break-word',
+                                                                lineHeight: 1.4,
+                                                            }}
+                                                        >
                                                             {info.value}
                                                         </Typography>
                                                     )}
@@ -515,13 +549,15 @@ const ContactSection: React.FC = () => {
                                     borderRadius: 2,
                                 }}
                             >
-                                <CardContent sx={{ p: 3 }}>
+                                <CardContent sx={{ p: isMobile ? 2.5 : 3 }}>
                                     <Typography
                                         variant="h5"
                                         sx={{
                                             mb: 3,
                                             fontWeight: 600,
                                             color: theme.palette.secondary.main,
+                                            fontSize: isMobile ? '1.4rem' : '1.5rem',
+                                            textAlign: 'center',
                                         }}
                                     >
                                         Let's Connect

@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-This is a modern portfolio website built with Astro, React, Material UI, and TypeScript. The project showcases a full-stack developer's skills and projects.
+This is a modern portfolio website built with Astro, React, Material UI, and TypeScript. The project showcases a full-stack engineer's skills and projects.
 
 ## Technology Stack
 

@@ -32,22 +32,22 @@ export const briefList: AudienceBrief[] = [
     {
         audience: 'For anyone',
         brief:
-            'I design and develop scalable, user-focused applications that solve real-world problems. Whether it’s a sleek web platform or a complex backend system, I bring ideas to life with precision and care.',
+            'I translate human needs into code, caring about the little details most people never see: create something that matters — not just something that works.',
     },
     {
         audience: 'Recruiters',
         brief:
-            'I’m a full-stack developer with a proven track record in building reliable, scalable solutions. With expertise in modern technologies and a commitment to clean code, I deliver results that drive business success."',
+            "I'm a Full Stack engineer with a proven track record in building reliable, scalable solutions. With expertise in modern technologies and a commitment to clean code, I deliver results that drive business success.",
     },
     {
         audience: 'Product Managers',
         brief:
-            'I bring end-to-end technical expertise to support your product journey, from discovery to delivery. I’ll collaborate closely to align technical execution with your product vision, maximizing impact at every stage.',
+            "I bring end-to-end technical expertise to support your product journey, from discovery to delivery. I'll collaborate closely to align technical execution with your product vision, maximizing impact at every stage.",
     },
     {
         audience: 'Engineers',
         brief:
-            'I’m a developer who values efficiency, maintainability, and collaboration. I write clean, scalable code, optimize performance, and contribute to a strong engineering culture by sharing knowledge and solving challenges together.',
+            "I'm a engineer who values efficiency, maintainability, and collaboration. I write clean, scalable code, optimize performance, and contribute to a strong engineering culture by sharing knowledge and solving challenges together.",
     },
 ];
 
@@ -94,7 +94,7 @@ export const technicalAreas: TechnicalArea[] = [
 
         ],
         description: 'Server-side development, API design, and scalable architecture',
-        descriptionHighlight:'I turn coffee into APIs (with occasional Stack Overflow breaks)',
+        descriptionHighlight:'I create functional endpoints and make your site fast...eventually',
     },
     {
         category: 'DevOps, Databases & Tools',
@@ -124,7 +124,7 @@ export const technicalAreas: TechnicalArea[] = [
 
 export const experiences: Experience[] = [
     {
-        role: 'Senior Full Stack Developer',
+        role: 'Senior Full Stack Engineer',
         company: 'Paradise Mobile',
         companyUrl: 'https://www.linkedin.com/company/paradise-mobile/about',
         period: '2024 - Present',

@@ -1,9 +1,8 @@
-// Utility function for smooth scrolling to sections with navbar offset
 export const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
         const navbarHeight = window.innerWidth < 900 ? 64 : 72; // Match Toolbar heights
-        const additionalOffset = 24; // Extra breathing room
+        const additionalOffset = 24; 
         const totalOffset = navbarHeight + additionalOffset;
         
         const elementPosition = element.offsetTop - totalOffset;
@@ -14,14 +13,12 @@ export const scrollToSection = (sectionId: string) => {
         });
     }
 };
+// I like to build useful stuff, break things on purpose, and obsess over clean code and clever UIs.
 
-// Personal information constants
 export const PERSONAL_INFO = {
     name: 'Bernardo Moschen',
-    title: 'Full Stack Developer',
-    description: `I'm a passionate full stack developer who loves creating modern web applications
-        with clean code and great user experiences. I specialize in React, Node.js, and
-        TypeScript, always eager to learn new technologies and tackle challenging problems.`,
+    title: 'Full Stack Engineer',
+    description: `Since 2019 bringing life to scalable, maintainable solutions that deliver measurable business impact. Mostly advocating in the TypeScript multiverse: React and Node.js are my go-to weapons of choice.`,
     profileImage: '/profile-photo.jpeg',
     initials: 'BM',
     skills: [

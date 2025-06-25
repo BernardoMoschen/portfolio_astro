@@ -13,7 +13,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import { briefList } from '../../data/aboutData';
 
 const AboutContent: React.FC = () => {
-    const [selectedTab, setSelectedTab] = useState<number>(1);
+    const [selectedTab, setSelectedTab] = useState<number>(0);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));

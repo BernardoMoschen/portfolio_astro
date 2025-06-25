@@ -5,8 +5,6 @@ import {
     useTheme,
     useMediaQuery,
 } from '@mui/material';
-
-// Import sub-components
 import {
     ProfileAvatar,
     HeroText,
@@ -14,8 +12,6 @@ import {
     ScrollIndicator,
     BackgroundElements,
 } from './components';
-
-// Import utilities and constants
 import { PERSONAL_INFO, scrollToSection } from './utils';
 
 const HeroSection: React.FC = () => {
@@ -35,11 +31,7 @@ const HeroSection: React.FC = () => {
                     : `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.primary.light}10 50%, ${theme.palette.secondary.light}20 100%)`,
                 position: 'relative',
                 overflow: 'hidden',
-                // Add padding top to account for fixed navbar + breathing room
-                // Mobile: 64px navbar + 32px spacing = 96px (12 * 8px)
-                // Desktop: 72px navbar + 24px spacing = 96px (12 * 8px)  
                 pt: { xs: 12, sm: 12 },
-                // Add padding bottom on mobile to prevent content cutoff
                 pb: isMobile ? 8 : 0,
             }}
         >
@@ -48,7 +40,6 @@ const HeroSection: React.FC = () => {
                 position: 'relative',
                 zIndex: 1,
                 py: isMobile ? 4 : 0,
-                // Add responsive padding to prevent experience badge cutoff
                 px: { xs: 6, sm: 4, md: 3 },
             }}>
                 <Box

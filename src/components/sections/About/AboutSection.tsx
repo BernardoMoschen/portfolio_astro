@@ -112,8 +112,7 @@ const AboutSection: React.FC = () => {
                             mb: 4,
                         }}
                     >
-                        Passionate developer crafting digital experiences with modern technologies
-                        and a focus on clean, efficient code.
+                        I like to build useful stuff, break things on purpose, and obsess over clean code and clever UIs.
                     </Typography>
 
                     {/* Quick Stats */}
@@ -133,7 +132,7 @@ const AboutSection: React.FC = () => {
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <AutoAwesome sx={{ color: 'secondary.main', fontSize: 20 }} />
                             <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary' }}>
-                                Full-Stack Developer
+                                Full-Stack Engineer
                             </Typography>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -164,7 +163,7 @@ const AboutSection: React.FC = () => {
                             : `0 20px 40px ${theme.palette.primary.main}10`,
                     }}
                 >
-                    <Grid container spacing={4}>
+                    <Grid container >
                         <AboutContent />
                         <TechnicalExpertiseSection />
                     </Grid>

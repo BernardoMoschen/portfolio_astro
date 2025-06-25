@@ -145,6 +145,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                         fontSize: isMobile ? '0.6rem' : '0.7rem',
                         lineHeight: 1.2,
                         display: 'block',
+                        ml: !isMobile ? 2 : 0,
                         transform: isMobile ? 'none' : 'rotate(-90deg)',
                         transformOrigin: 'center',
                         whiteSpace: 'nowrap',
@@ -288,7 +289,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                 </CardContent>
             </Card>
 
-            {/* Creative Developer Badge */}
+            {/* Badge */}
             <Box
                 sx={{
                     position: 'absolute',
@@ -310,7 +311,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                         opacity: 0.8,
                     }}
                 >
-                    Creative
+                    Digital
                 </Typography>
                 <Typography
                     variant="h4"
@@ -325,7 +326,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
                         filter: theme.palette.mode === 'dark' ? 'none' : 'drop-shadow(0 2px 4px rgba(74, 103, 65, 0.2))',
                     }}
                 >
-                    Developer.
+                    Revolutionary.
                 </Typography>
             </Box>
 
